@@ -3,11 +3,22 @@ package service;
 import java.util.Date;
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import domain.Attachment;
 import domain.FileType;
 import domain.Lecture;
+import domain.LectureDetail;
 
+@Stateless
 public class LectureManager implements LectureInterface {
+	
+	@PersistenceContext
+	EntityManager em;
 
+	/* Interface methods */	
 	@Override
 	public boolean createLecture(String name, String description, Date date,
 			long teacherId) {
@@ -29,9 +40,11 @@ public class LectureManager implements LectureInterface {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Lecture> getAllLectures() {
-		// TODO Auto-generated method stub
-		return null;
+		//LectureDetails will change, but Lectures wont,
+		//so we get Lectures instead of LectureDetails		
+		return em.createNamedQuery("lecture.all").getResultList();
 	}
 
 	@Override
@@ -41,15 +54,42 @@ public class LectureManager implements LectureInterface {
 	}
 
 	@Override
-	public boolean deleteAttachment(long id) {
+	public boolean deleteAttachment(long lectureId, long id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean addAttachment(String name, FileType type) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addAttachment(long lectureId, String name, FileType type) {
+		Lecture lecture = em.find(Lecture.class, lectureId);
+		
+		//create new attachment from data
+		Attachment attachment = new Attachment();
+		//TODO: will attachment id be set automatically? 
+		attachment.setName(name);
+		attachment.setType(type);
+		
+		//get actual attachment list and add new attachment
+		List<Attachment> attachmentList = lecture.getAttachment();
+		attachmentList.add(attachment);
+		
+		lecture.setAttachment(attachmentList);
+				
+		return true;
 	}
+		
+	/* Additional methods */	
+	public int getLectureDetailRank(long detailId){
+		LectureDetail lectureDetail = em.find(LectureDetail.class, detailId);		
+		return lectureDetail.getRate();
+	}	
+	
+	public void setLectureDetailRank(long detailId, int rate){
+		LectureDetail lectureDetail = em.find(LectureDetail.class, detailId);
+		
+		lectureDetail.setRate(rate);		
+		em.merge(lectureDetail);			
+	}
+		
 
 }

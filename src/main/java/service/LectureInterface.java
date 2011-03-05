@@ -12,6 +12,6 @@ public interface LectureInterface {
 	boolean updateLecture(String name, String description, Date date, long teacherId);
 	List<Lecture> getAllLectures();
 	boolean deleteLecture(long id);
-	boolean deleteAttachment(long id);
-	boolean addAttachment(String name, FileType type);
+	boolean deleteAttachment(long lectureId, long id);
+	boolean addAttachment(long lectureId, String name, FileType type);
 }

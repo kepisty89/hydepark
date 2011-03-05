@@ -19,10 +19,10 @@ public class UserBean {
 	@Inject
 	UserInterface userManager;
 	
-	private String name;	//Imie.
-	private String surname;	//Nazwisko.
-	private String login;	//Login.
-	private String password;	//Haslo.
+	private String name;
+	private String surname;
+	private String login;
+	private String password;
 	
 	public String getName() {
 		return name;
@@ -49,7 +49,7 @@ public class UserBean {
 		this.password = password;
 	}
 	
-	//AKCJE
+	//Actions
 	public String createUser() {
 		if(name.isEmpty() || surname.isEmpty() || login.isEmpty() || password.isEmpty()) {
 			return "error";

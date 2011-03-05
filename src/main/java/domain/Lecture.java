@@ -13,8 +13,8 @@ import javax.persistence.OneToMany;
 public class Lecture {
 	private long id;
 	private String name;
-	private String description;
-	private List<LectureDetail> lectureDetail;
+	private String description;	
+	private List<LectureDetail> lectureDetail;	
 	private List<Attachment> attachment;
 	
 	@Id

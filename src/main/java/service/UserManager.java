@@ -110,12 +110,12 @@ public class UserManager implements UserInterface {
 		return ;
 	}
 	
-	public long findUserId(String name) {	//Na podstawie nazwy uzytkownika znajdz jego id.
+	public long findUserId(String login) {	//Find user id using his login
 		List<User> listOfUsers = getAllUsers();
 		Iterator<User> it = listOfUsers.iterator();
 		while(it.hasNext()) {
 			User val = it.next();
-			if(val.getName().contentEquals(name)) {
+			if(val.getName().contentEquals(login)) {
 				return val.getId();
 			}
 		}
