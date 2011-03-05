@@ -58,9 +58,9 @@ public class UserManager implements UserInterface {
 
 	@Override
 	public boolean deleteUser(String login) {
-		User user = em.find(User.class, findUserId(login)); //Znajdü uøytkownika o danym id.
+		User user = em.find(User.class, findUserId(login)); //Znajdz uzytkownika o danym id.
 		
-		em.remove(user);	//UsuÒ uøytkownika z bazy.
+		em.remove(user);	//Usun uzytkownika z bazy.
 		
 		return true;
 	}
@@ -68,7 +68,7 @@ public class UserManager implements UserInterface {
 	@Override
 	public boolean updateUser(String login, String password, String name,
 			String surname) {
-		User user = em.find(User.class, findUserId(login));	//Znajdü uøytkownika o danym id.
+		User user = em.find(User.class, findUserId(login));	//Znajdz uzytkownika o danym id.
 		Credential credential = em.find(Credential.class, findUserId(login));
 		
 		if(password != "") {
@@ -110,7 +110,7 @@ public class UserManager implements UserInterface {
 		return ;
 	}
 	
-	public long findUserId(String name) {	//Na podstawie nazwy uøytkownika znajdü jego id.
+	public long findUserId(String name) {	//Na podstawie nazwy uzytkownika znajdz jego id.
 		List<User> listOfUsers = getAllUsers();
 		Iterator<User> it = listOfUsers.iterator();
 		while(it.hasNext()) {

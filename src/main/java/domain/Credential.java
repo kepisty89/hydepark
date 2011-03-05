@@ -12,11 +12,11 @@ import javax.persistence.Id;
 public class Credential {
 	private long id;	//Id Usera. (Takie samo jak w tabeli User.)
 	private String login;	//Login.
-	private String password;	//Has³o.
-	private Role role;	//Rola u¿ytkownika.
-	private int rank;	//Ocena u¿ytkownika. (Tylko nauczyciele.)
-	private boolean isBanned;	//Czy u¿ytkownik jest zbanowany?
-	//private User user;	//Jaki to u¿ytkownik?
+	private String password;	//Haslo.
+	private Role role;	//Rola uzytkownika.
+	private int rank;	//Ocena uzytkownika. (Tylko nauczyciele.)
+	private boolean isBanned;	//Czy uzytkownik jest zbanowany?
+	//private User user;	//Jaki to uzytkownik?
 	
 	@Id
 	@GeneratedValue

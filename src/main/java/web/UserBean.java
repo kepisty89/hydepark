@@ -19,10 +19,10 @@ public class UserBean {
 	@Inject
 	UserInterface userManager;
 	
-	private String name;	//Imiê.
+	private String name;	//Imie.
 	private String surname;	//Nazwisko.
 	private String login;	//Login.
-	private String password;	//Has³o.
+	private String password;	//Haslo.
 	
 	public String getName() {
 		return name;

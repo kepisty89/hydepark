@@ -43,7 +43,6 @@
 		<nature>org.maven.ide.eclipse.maven2Nature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
-		<nature>org.jboss.tools.jsf.jsfnature</nature>
 		<nature>org.jboss.tools.jst.web.kb.kbnature</nature>
 	</natures>
 </projectDescription>

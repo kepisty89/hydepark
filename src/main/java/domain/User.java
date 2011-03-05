@@ -4,6 +4,7 @@ import java.util.List;
 //import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 //import javax.persistence.FetchType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
@@ -15,11 +16,11 @@ import javax.persistence.OneToOne;
 public class User {
 	//Pola w bazie danych.
 	private long id;	//Id Usera.
-	private String name;	//Imiê.
+	private String name;	//Imie.
 	private String surname;	//Nazwisko.
-	private Credential credential;	//Obiekt z tabeli Credential zawieraj¹cy login, has³o, etc.
-	private List<Participant> participant;	//Lista obiektów z tabeli Participant, zawieraj¹ca spis wyk³adów, na które u¿ytkownik jest zapisany.
-	private Role role;	//Rola u¿ytkownika.
+	private Credential credential;	//Obiekt z tabeli Credential zawierajacy login, haslo, etc.
+	private List<Participant> participant;	//Lista obiektow z tabeli Participant, zawierajaca spis wykladow, na ktore uzytkownik jest zapisany.
+	private Role role;	//Rola uzytkownika.
 	
 	@Id
 	@GeneratedValue
@@ -55,7 +56,7 @@ public class User {
 	public void setParticipant(List<Participant> participant) {
 		this.participant = participant;
 	}
-	@OneToOne
+	@Enumerated
 	public Role getRole() {
 		return role;
 	}
