@@ -54,9 +54,11 @@ public class LectureManager implements LectureInterface {
 	}
 
 	@Override
-	public boolean deleteAttachment(long lectureId, long id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteAttachment(long lectureId, long id) {		
+		Attachment attachment = em.find(Attachment.class, id);		
+		em.remove(attachment);					
+		
+		return true;
 	}
 
 	@Override
@@ -74,6 +76,9 @@ public class LectureManager implements LectureInterface {
 		attachmentList.add(attachment);
 		
 		lecture.setAttachment(attachmentList);
+		
+		//add attachments to lecture
+		em.merge(lecture);
 				
 		return true;
 	}
