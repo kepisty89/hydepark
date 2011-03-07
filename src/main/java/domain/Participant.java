@@ -2,15 +2,17 @@ package domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.ManyToOne;
 //import javax.persistence.NamedQuery;
 import javax.persistence.Id;
+import domain.User;
+import domain.LectureDetail;
 
 @Entity
-//@NamedQuery(name="user.all", query="from User")
 public class Participant {
 	private long id;
-	private long userId;
-	private long lectureId;
+	private User user;
+	private LectureDetail lectureDetail;
 	
 	@Id
 	@GeneratedValue
@@ -20,16 +22,18 @@ public class Participant {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public long getUserId() {
-		return userId;
+	@ManyToOne//Not sure about this "mapped by", "fetch", "cascade" thing. [Daniel]
+	public User getUser() {
+		return user;
 	}
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public long getLectureId() {
-		return lectureId;
+	@ManyToOne//Not sure about this "mapped by", "fetch", "cascade" thing. [Daniel]
+	public LectureDetail getLectureDetail() {
+		return lectureDetail;
 	}
-	public void setLectureId(long lectureId) {
-		this.lectureId = lectureId;
+	public void setLectureDetail(LectureDetail lectureDetail) {
+		this.lectureDetail = lectureDetail;
 	}
 }

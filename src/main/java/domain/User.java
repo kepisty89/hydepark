@@ -1,9 +1,7 @@
 package domain;
 
 import java.util.List;
-//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-//import javax.persistence.FetchType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,13 +12,12 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQuery(name="user.all", query="from User")
 public class User {
-	//Pola w bazie danych.
-	private long id;	//Id Usera.
-	private String name;	//Imie.
-	private String surname;	//Nazwisko.
-	private Credential credential;	//Obiekt z tabeli Credential zawierajacy login, haslo, etc.
-	private List<Participant> participant;	//Lista obiektow z tabeli Participant, zawierajaca spis wykladow, na ktore uzytkownik jest zapisany.
-	private Role role;	//Rola uzytkownika.
+	private long id;
+	private String name;
+	private String surname;
+	private Credential credential;
+	private List<Participant> participant;
+	private Role role;
 	
 	@Id
 	@GeneratedValue
@@ -42,14 +39,14 @@ public class User {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	@OneToOne//(mappedBy="user", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToOne//Not sure about this "mapped by", "fetch", "cascade" thing. [Daniel]
 	public Credential getCredential() {
 		return credential;
 	}
 	public void setCredential(Credential credential) {
 		this.credential = credential;
 	}
-	@OneToMany//(mappedBy="user", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany//Not sure about this "mapped by", "fetch", "cascade" thing. [Daniel]
 	public List<Participant> getParticipant() {
 		return participant;
 	}

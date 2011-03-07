@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,7 +8,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="lecture.all", query="from User")
+@NamedQuery(name="lecture.all", query="from Lecture")
 public class Lecture {
 	private long id;
 	private String name;
@@ -37,14 +36,14 @@ public class Lecture {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	@OneToMany
+	@OneToMany//Not sure about this "mapped by", "fetch", "cascade" thing. [Daniel] 
 	public List<LectureDetail> getLectureDetail() {
 		return lectureDetail;
 	}
 	public void setLectureDetail(List<LectureDetail> lectureDetail) {
 		this.lectureDetail = lectureDetail;
 	}
-	@OneToMany
+	@OneToMany//Not sure about this "mapped by", "fetch", "cascade" thing. [Daniel]
 	public List<Attachment> getAttachment() {
 		return attachment;
 	}

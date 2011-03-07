@@ -2,11 +2,9 @@ package service;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import domain.Attachment;
 import domain.FileType;
 import domain.Lecture;
