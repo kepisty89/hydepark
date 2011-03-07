@@ -3,12 +3,17 @@ package domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 //import javax.persistence.NamedQuery;
 import javax.persistence.Id;
 import domain.User;
 import domain.LectureDetail;
 
 @Entity
+@NamedQueries({
+		@NamedQuery(name = "participant.all", query="SELECT p FROM Participant p GROUP BY p.user"),
+		@NamedQuery(name = "participant.byLectureDetail", query="SELECT p FROM Participant p WHERE p.lectureDetail = :LectureDetail")})
 public class Participant {
 	private long id;
 	private User user;
@@ -35,5 +40,14 @@ public class Participant {
 	}
 	public void setLectureDetail(LectureDetail lectureDetail) {
 		this.lectureDetail = lectureDetail;
+	}
+	public Participant(User user, LectureDetail lectureDetail) {
+		super();
+		this.user = user;
+		this.lectureDetail = lectureDetail;
+	}
+	
+	public Participant() {
+		super();
 	}
 }

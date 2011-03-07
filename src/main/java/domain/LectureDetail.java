@@ -13,7 +13,7 @@ import domain.Lecture;
 public class LectureDetail {
 	private long id;
 	private Date startDate;
-	private long teacherId;
+	private User teacher;
 	private int rate;
 	private Lecture lecture;
 	
@@ -31,11 +31,12 @@ public class LectureDetail {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public long getTeacherId() {
-		return teacherId;
+	@ManyToOne
+	public User getTeacher() {
+		return teacher;
 	}
-	public void setTeacherId(long teacherId) {
-		this.teacherId = teacherId;
+	public void setTeacher(User teacher) {
+		this.teacher = teacher;
 	}
 	public int getRate() {
 		return rate;
@@ -50,4 +51,16 @@ public class LectureDetail {
 	public void setLecture(Lecture lecture) {
 		this.lecture = lecture;
 	}
+	
+	public LectureDetail() {
+		super();
+	}
+	public LectureDetail(Date startDate, User teacher, Lecture lecture) {
+		super();
+		this.startDate = startDate;
+		this.teacher = teacher;
+		this.lecture = lecture;
+	}
+	
+	
 }
