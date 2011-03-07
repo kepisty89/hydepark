@@ -60,4 +60,14 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	public User(String name, String surname) {
+		super();
+		this.name = name;
+		this.surname = surname;
+	}
+	public User() {
+		super();
+	}
+	
+	
 }

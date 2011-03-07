@@ -50,4 +50,13 @@ public class Lecture {
 	public void setAttachment(List<Attachment> attachment) {
 		this.attachment = attachment;
 	}
+	public Lecture(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+	
+	public Lecture() {
+		super();
+	}
 }
