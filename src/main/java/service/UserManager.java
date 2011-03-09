@@ -3,11 +3,9 @@ package service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import domain.Credential;
 import domain.Participant;
 import domain.Role;
@@ -46,14 +44,13 @@ public class UserManager implements UserInterface {
 
 	@Override
 	public User getUser(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(User.class, id);
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<User>) em.createNamedQuery("user.all").getResultList();
 	}
 
 	@Override

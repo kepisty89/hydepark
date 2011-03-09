@@ -5,16 +5,17 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 //import javax.persistence.NamedQuery;
+import domain.Lecture;
 
 @Entity
-//@NamedQuery
 public class LectureDetail {
 	private long id;
 	private Date startDate;
-	private long teacherId;
+	private User teacher;
 	private int rate;
-	private long lectureId;
+	private Lecture lecture;
 	
 	@Id
 	@GeneratedValue
@@ -30,11 +31,12 @@ public class LectureDetail {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public long getTeacherId() {
-		return teacherId;
+	@ManyToOne
+	public User getTeacher() {
+		return teacher;
 	}
-	public void setTeacherId(long teacherId) {
-		this.teacherId = teacherId;
+	public void setTeacher(User teacher) {
+		this.teacher = teacher;
 	}
 	public int getRate() {
 		return rate;
@@ -42,10 +44,23 @@ public class LectureDetail {
 	public void setRate(int rate) {
 		this.rate = rate;
 	}
-	public long getLectureId() {
-		return lectureId;
+	@ManyToOne//Not sure about this "mapped by", "fetch", "cascade" thing. [Daniel]
+	public Lecture getLecture() {
+		return lecture;
 	}
-	public void setLectureId(long lectureId) {
-		this.lectureId = lectureId;
+	public void setLecture(Lecture lecture) {
+		this.lecture = lecture;
 	}
+	
+	public LectureDetail() {
+		super();
+	}
+	public LectureDetail(Date startDate, User teacher, Lecture lecture) {
+		super();
+		this.startDate = startDate;
+		this.teacher = teacher;
+		this.lecture = lecture;
+	}
+	
+	
 }

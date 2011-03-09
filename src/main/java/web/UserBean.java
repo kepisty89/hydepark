@@ -1,15 +1,8 @@
 package web;
 
-//import java.util.List;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-//import domain.Credential;
-//import domain.Participant;
-//import domain.Role;
-
 import service.UserInterface;
 
 @RequestScoped

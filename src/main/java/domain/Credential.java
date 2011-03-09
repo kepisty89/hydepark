@@ -1,22 +1,17 @@
 package domain;
 
 import javax.persistence.Entity;
-//import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.NamedQuery;
-//import javax.persistence.OneToOne;
 
 @Entity
-//@NamedQuery(name="user.all", query="from User")
 public class Credential {
-	private long id;	//Id Usera. (Takie samo jak w tabeli User.)
-	private String login;	//Login.
-	private String password;	//Haslo.
-	private Role role;	//Rola uzytkownika.
-	private int rank;	//Ocena uzytkownika. (Tylko nauczyciele.)
-	private boolean isBanned;	//Czy uzytkownik jest zbanowany?
-	//private User user;	//Jaki to uzytkownik?
+	private long id;	
+	private String login;
+	private String password;
+	private Role role;	
+	private int rank;
+	private boolean isBanned;
 	
 	@Id
 	@GeneratedValue
@@ -56,11 +51,4 @@ public class Credential {
 	public void setBanned(boolean isBanned) {
 		this.isBanned = isBanned;
 	}
-//	@OneToOne//(fetch=FetchType.LAZY)
-//	public User getUser() {
-//		return user;
-//	}
-//	public void setUser(User user) {
-//		this.user = user;
-//	}	
 }

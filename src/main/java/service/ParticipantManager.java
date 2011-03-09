@@ -2,33 +2,39 @@ package service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import domain.LectureDetail;
 import domain.Participant;
 import domain.User;
 
 public class ParticipantManager implements ParticipantInterface {
 
+	@PersistenceContext
+	EntityManager em;
+	
 	@Override
-	public void addParticipant(long userId, long lectureId) {
-		// TODO Auto-generated method stub
-		
+	public void addParticipant(User user, LectureDetail lecDet) {
+		Participant p = new Participant(user, lecDet);
+		em.persist(p);
 	}
 
 	@Override
 	public void deleteParticipant(Participant participant) {
-		// TODO Auto-generated method stub
-		
+		em.remove(em.find(Participant.class, participant.getId()));
 	}
 
 	@Override
-	public List<User> getParticipants(long lectureId) {
-		// TODO Auto-generated method stub
-		return null;
+	@SuppressWarnings("unchecked")
+	public List<User> getParticipants(LectureDetail lecDet) {
+		return em.createNamedQuery("participant.byLectureDetail").setParameter("LectureDetail", lecDet).getResultList();
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Participant> getAllParticipants() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createNamedQuery("participant.all").getResultList();
 	}
 
 	@Override
