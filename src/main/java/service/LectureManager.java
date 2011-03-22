@@ -9,6 +9,7 @@ import domain.Attachment;
 import domain.FileType;
 import domain.Lecture;
 import domain.LectureDetail;
+import domain.User;
 
 @Stateless
 public class LectureManager implements LectureInterface {
@@ -18,22 +19,48 @@ public class LectureManager implements LectureInterface {
 
 	/* Interface methods */	
 	@Override
-	public boolean createLecture(String name, String description, Date date,
+	public boolean createLecture(String name, String description, Date startDate,
 			long teacherId) {
-		// TODO Auto-generated method stub
+		
+		//create new LECTURE object depending on data
+		Lecture lecture = new Lecture(name, description);
+
+		//find teacher by id
+		User teacher = (User) em.createQuery(
+				"from User where id=?1"
+				)
+				.setParameter(1, teacherId)
+				.getSingleResult();
+						
+		//we should first add lecture to DB without detail	
+		em.persist(lecture);
+		
+		Lecture savedLecture = em.find(Lecture.class, lecture.getId());
+				
+		//create new LECTUREDETAIL object depending on saved lecture
+		LectureDetail lectureDetail = new LectureDetail(startDate, teacher, savedLecture);		
+		em.persist(lectureDetail);		
+		
+		//add lectureDetail to lecture
+		savedLecture.getLectureDetail().add(lectureDetail);
+		//set lectureDetail
+		savedLecture.setLectureDetail(savedLecture.getLectureDetail());
+		
+		em.merge(savedLecture);			
+		
 		return false;
 	}
 
 	@Override
-	public Lecture getLecture(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Lecture getLecture(long id) {		
+		Lecture lecture = em.find(Lecture.class, id); 
+		return lecture;
 	}
 
 	@Override
-	public boolean updateLecture(String name, String description, Date date,
+	public boolean updateLecture(String name, String description, Date startDate,
 			long teacherId) {
-		// TODO Auto-generated method stub
+		// TODO [Daniel]
 		return false;
 	}
 
@@ -47,7 +74,7 @@ public class LectureManager implements LectureInterface {
 
 	@Override
 	public boolean deleteLecture(long id) {
-		// TODO Auto-generated method stub
+		// TODO [Daniel]
 		return false;
 	}
 
@@ -88,8 +115,7 @@ public class LectureManager implements LectureInterface {
 	}	
 	
 	public void setLectureDetailRank(long detailId, int rate){
-		LectureDetail lectureDetail = em.find(LectureDetail.class, detailId);
-		
+		LectureDetail lectureDetail = em.find(LectureDetail.class, detailId);		
 		lectureDetail.setRate(rate);		
 		em.merge(lectureDetail);			
 	}
