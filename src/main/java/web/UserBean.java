@@ -1,8 +1,12 @@
 package web;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import domain.Credential;
 import service.UserInterface;
 
 @RequestScoped
@@ -16,6 +20,7 @@ public class UserBean {
 	private String surname;
 	private String login;
 	private String password;
+	private String newPassword;
 	
 	public String getName() {
 		return name;
@@ -41,40 +46,73 @@ public class UserBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
 	
 	//Actions
 	public String createUser() {
 		if(name.isEmpty() || surname.isEmpty() || login.isEmpty() || password.isEmpty()) {
 			return "error";
 		}
+		else if (userManager.duplicate(login))
+		{
+			return "error";
+		}
 		else {
 			userManager.createUser(login, password, name, surname);
-			return "home";
+			return "danielTestView";
 		}
 	}
 	
 	public String deleteUser() {
-		userManager.deleteUser(login);
-
-		return "home";
+		if (userManager.deleteUser(login, password))
+		{
+			return "danielTestView";
+		}
+		else 
+		{
+			return "error";
+		}
 	}
 	
 	public String updateUser() {
-		userManager.updateUser(login, password, name, surname);
-		
-		return "home";
+		if (userManager.updateUser(login, password, newPassword, name, surname))
+		{
+			return "danielTestView";
+		}
+		else
+		{
+			return "error";
+		}
 	}
 	
 	public String banUser() {
 		userManager.banUser(login);
 		
-		return "home";
+		return "danielTestView";
 	}
 	
 	public String unBanUser() {
 		userManager.unBanUser(login);
 		
-		return "home";
+		return "danielTestView";
+	}
+	
+	public String getReset() {	//Reset bean.
+		name = null;
+		surname = null;
+		login = null;
+		password = null;
+		newPassword = null;
+		return null;
+	}
+	
+	public List<Credential> getAllCredentials() {
+		return userManager.readCredential();	//Zwróæ listê wszystkich u¿ytkowników.
 	}
 	
 }

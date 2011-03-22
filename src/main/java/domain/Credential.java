@@ -3,8 +3,10 @@ package domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="credential.all", query="from Credential")
 public class Credential {
 	private long id;	
 	private String login;

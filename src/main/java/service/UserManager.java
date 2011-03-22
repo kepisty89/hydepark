@@ -3,9 +3,11 @@ package service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import domain.Credential;
 import domain.Participant;
 import domain.Role;
@@ -42,6 +44,50 @@ public class UserManager implements UserInterface {
 		return true;
 	}
 
+	public boolean deleteUser(String login, String password) {
+		long userId = findUserCredentialId(login);
+		Credential credential = em.find(Credential.class, userId);
+		User user = em.find(User.class, userId);
+		if (credential.getPassword().contentEquals(password))
+		{
+			em.remove(user);
+			em.remove(credential);
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateUser(String login, String password, String newPassword, String name,
+			String surname) {
+		long userId = findUserCredentialId(login);
+		User user = em.find(User.class, userId);	
+		Credential credential = em.find(Credential.class, userId);
+		
+		if (credential.getPassword().contentEquals(password))
+		{
+			if(newPassword != "") {
+				credential.setPassword(newPassword);
+			}
+			if(name != "") {	
+				user.setName(name);
+			}
+			if(surname != "") {
+				user.setSurname(surname);
+			}
+			em.merge(user);	
+			em.merge(credential);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	@Override
 	public User getUser(long id) {
 		return em.find(User.class, id);
@@ -54,36 +100,6 @@ public class UserManager implements UserInterface {
 	}
 
 	@Override
-	public boolean deleteUser(String login) {
-		User user = em.find(User.class, findUserId(login)); //Znajdz uzytkownika o danym id.
-		
-		em.remove(user);	//Usun uzytkownika z bazy.
-		
-		return true;
-	}
-
-	@Override
-	public boolean updateUser(String login, String password, String name,
-			String surname) {
-		User user = em.find(User.class, findUserId(login));	//Znajdz uzytkownika o danym id.
-		Credential credential = em.find(Credential.class, findUserId(login));
-		
-		if(password != "") {
-			credential.setPassword(password);
-		}
-		if(name != "") {	
-			user.setName(name);
-		}
-		if(surname != "") {
-			user.setSurname(surname);
-		}
-		
-		em.merge(user);	
-		em.merge(credential);
-		return false;
-	}
-
-	@Override
 	public void setRole(long id, Role role) {
 		// TODO Auto-generated method stub
 		
@@ -91,7 +107,7 @@ public class UserManager implements UserInterface {
 
 	@Override
 	public void banUser(String login) {
-		Credential credential = em.find(Credential.class, findUserId(login));
+		Credential credential = em.find(Credential.class, findUserCredentialId(login));
 		
 		credential.setBanned(true);
 		
@@ -100,7 +116,7 @@ public class UserManager implements UserInterface {
 
 	@Override
 	public void unBanUser(String login) {
-		Credential credential = em.find(Credential.class, findUserId(login));
+		Credential credential = em.find(Credential.class, findUserCredentialId(login));
 		
 		credential.setBanned(false);
 		
@@ -117,6 +133,38 @@ public class UserManager implements UserInterface {
 			}
 		}
 		return -1;
+	}
+	
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<Credential> readCredential() {
+		return em.createNamedQuery("credential.all").getResultList();	//Zwróæ listê wszystkich u¿ytkowników.
+	}
+	
+	public long findUserCredentialId(String login)
+	{
+		List<Credential> listOfUsersCredentials = readCredential();
+		Iterator<Credential> it = listOfUsersCredentials.iterator();
+		while(it.hasNext()) {
+			Credential val = it.next();
+			if(val.getLogin().contentEquals(login)) {
+				return val.getId();
+			}
+		}
+		return -1;
+	}
+	
+	public boolean duplicate(String login) {	//SprawdŸ, czy nie zasz³a próba stworzenia u¿ytkownika, który ju¿ istnieje.
+		List<Credential> listOfUsers = readCredential();
+		Iterator<Credential> it = listOfUsers.iterator();
+		while(it.hasNext()) {
+			Credential val = it.next();
+			if(val.getLogin().contentEquals(login)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
