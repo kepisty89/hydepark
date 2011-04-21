@@ -7,22 +7,21 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>DeleteUser</h2>
+    <h2>Login</h2>
 
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputText value="login " />
-			<h:selectOneMenu value="#{userBean.login}">
-    			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
-    		</h:selectOneMenu>
+			<h:inputText value="#{loginBean.login}" />
 			
 			<h:outputText value="password " />
-			<h:inputSecret value="#{userBean.password}" />
+			<h:inputSecret value="#{loginBean.password}" />
 		</h:panelGrid>
-
+		
 		<h:panelGrid columns="2">
-			<h:commandButton value="deleteUser" action="#{userBean.deleteUser}" />
+			<h:commandButton value="login" action="#{loginBean.login}" />
 		</h:panelGrid>
+		
 	</h:form>
       
    </ui:define>

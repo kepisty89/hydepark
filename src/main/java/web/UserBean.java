@@ -64,14 +64,14 @@ public class UserBean {
 		}
 		else {
 			userManager.createUser(login, password, name, surname);
-			return "danielTestView";
+			return "success";
 		}
 	}
 	
 	public String deleteUser() {
 		if (userManager.deleteUser(login, password))
 		{
-			return "danielTestView";
+			return "success";
 		}
 		else 
 		{
@@ -82,7 +82,7 @@ public class UserBean {
 	public String updateUser() {
 		if (userManager.updateUser(login, password, newPassword, name, surname))
 		{
-			return "danielTestView";
+			return "success";
 		}
 		else
 		{
@@ -93,13 +93,13 @@ public class UserBean {
 	public String banUser() {
 		userManager.banUser(login);
 		
-		return "danielTestView";
+		return "success";
 	}
 	
 	public String unBanUser() {
 		userManager.unBanUser(login);
 		
-		return "danielTestView";
+		return "success";
 	}
 	
 	public String getReset() {	//Reset bean.
