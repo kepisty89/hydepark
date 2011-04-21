@@ -9,24 +9,12 @@
     
     <h2>ReadUser</h2>
 
-	<table>
-    	<tr>
-			<h:dataTable value="#{userBean.allCredentials}" var="current">
-				      <h:column>
-					      <td width="300px">
-					      	<b>
-					      		<h:outputText value="login: " />
-					      	</b>
-					        <h:outputText value="#{current.login}" />
-					        
-					        <br />
-					        <hr width="100%" />
-					        <br />
-					      </td>
-		      </h:column>
-		    </h:dataTable>
-		    </tr>
-		    </table>
+	<h:panelGrid columns="2">
+		<h:outputText value="zarejestrowani userzy - " />
+		<h:selectOneMenu value="#{userBean.login}">
+   			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
+   		</h:selectOneMenu>
+	</h:panelGrid>
  		      
    </ui:define>
 </ui:composition>

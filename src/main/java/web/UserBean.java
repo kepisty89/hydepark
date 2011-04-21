@@ -21,7 +21,14 @@ public class UserBean {
 	private String login;
 	private String password;
 	private String newPassword;
+	private String role;
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getName() {
 		return name;
 	}
@@ -100,6 +107,18 @@ public class UserBean {
 		userManager.unBanUser(login);
 		
 		return "success";
+	}
+	
+	public String roleUser() {
+		if(login.isEmpty() || password.isEmpty()) {
+			return "error";
+		}
+		if(userManager.setRole(login, password, role)) {
+			return "success";
+		}
+		else {
+			return "error";
+		}
 	}
 	
 	public String getReset() {	//Reset bean.
