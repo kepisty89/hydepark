@@ -1,103 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
-
-	<h:head>
-
-	</h:head>
-	
-	<h:body>
-	
-		<p:layout fullPage="true">
-			
-			<p:layoutUnit position="top" height="75" resizable="false" closable="false" collapsible="false">
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- HEADER -->
-				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				<p>
-					HydePark
-				</p>
-				
-			</p:layoutUnit>
-			
-			<p:layoutUnit position="bottom" height="75" resizable="false" closable="false" collapsible="false">
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- BOTTOM -->
-				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<p>
-					Autorzy: Artur Rybak, Łukasz Kępiński, Daniel Landowski
-					<br />
-					Przedmiot: Projekt zespołowy
-				</p>
-				
-			</p:layoutUnit>
-			
-			<p:layoutUnit position="left" width="200" header="Menu" resizable="false" closable="false" collapsible="false">
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- LEFT -->
-				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<ul>
-					<li><a href="#">Opcja 1</a></li>
-					<li><a href="#">Opcja 2</a></li>
-					<li><a href="#">Opcja 3</a></li>
-				</ul>
-				
-			</p:layoutUnit>
-			
-			<p:layoutUnit position="right" width="200" header="News" resizable="false" closable="false" collapsible="false">
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- RIGHT -->
-				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-			
-				<p>
-					20.04.2011
-					<br />
-					Początek prac z Prime Faces.
-				</p>
-				
-			</p:layoutUnit>
-			
-			<p:layoutUnit position="center" scrollable="true">
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- CENTER -->
-				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<p>
-					Do roboty, kurde faja! :P
-				</p>
-				<p>
-					<img src="resources/gfx/bubbles.jpg" alt="Bubbles" />
-				</p>
-				
-			</p:layoutUnit>
-			
-		</p:layout>
-				
-	</h:body>
-</html>
+	xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+    
+    <p>
+		Do roboty, kurde faja! :P
+	</p>
+	<p>
+		<img src="resources/gfx/bubbles.jpg" alt="Bubbles" />
+	</p>
+      
+   </ui:define>
+</ui:composition>

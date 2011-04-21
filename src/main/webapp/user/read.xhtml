@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+    
+    <h2>ReadUser</h2>
+
+	<table>
+    	<tr>
+			<h:dataTable value="#{userBean.allCredentials}" var="current">
+				      <h:column>
+					      <td width="300px">
+					      	<b>
+					      		<h:outputText value="login: " />
+					      	</b>
+					        <h:outputText value="#{current.login}" />
+					        
+					        <br />
+					        <hr width="100%" />
+					        <br />
+					      </td>
+		      </h:column>
+		    </h:dataTable>
+		    </tr>
+		    </table>
+ 		      
+   </ui:define>
+</ui:composition>

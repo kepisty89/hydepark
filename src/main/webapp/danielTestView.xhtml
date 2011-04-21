@@ -1,16 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Daniel - test</title>
-</head>
-<body>
-
-	<h1>CreateUser</h1>
+	xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+      
+    <h1>CreateUser</h1>
 
 	<h:form>
 		${userBean.reset}
@@ -107,6 +104,6 @@
 			<h:commandButton value="unBanUser" action="#{userBean.unBanUser}" />
 		</h:panelGrid>
 	</h:form>
-
-</body>
-</html>
+      
+   </ui:define>
+</ui:composition>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+    
+    <h2>CreateUser</h2>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="login " />
+			<h:inputText value="#{userBean.login}" />
+
+			<h:outputText value="password " />
+			<h:inputSecret value="#{userBean.password}"/>
+
+			<h:outputText value="name " />
+			<h:inputText value="#{userBean.name}" />
+
+			<h:outputText value="surname " />
+			<h:inputText value="#{userBean.surname}" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="2">
+			<h:commandButton value="createUser" action="#{userBean.createUser}" />
+		</h:panelGrid>
+	</h:form>
+      
+   </ui:define>
+</ui:composition>

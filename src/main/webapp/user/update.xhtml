@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+    
+    <h2>UpdateUser</h2>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="login " />
+			<h:selectOneMenu value="#{userBean.login}">
+    			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
+    		</h:selectOneMenu>
+
+			<h:outputText value="password " />
+			<h:inputText value="#{userBean.password}" />
+			
+			<h:outputText value="new password " />
+			<h:inputText value="#{userBean.newPassword}" />
+
+			<h:outputText value="name " />
+			<h:inputText value="#{userBean.name}" />
+
+			<h:outputText value="surname " />
+			<h:inputText value="#{userBean.surname}" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="2">
+			<h:commandButton value="updateUser" action="#{userBean.updateUser}" />
+		</h:panelGrid>
+	</h:form>
+      
+   </ui:define>
+</ui:composition>
