@@ -45,6 +45,10 @@ public class UserManager implements UserInterface {
 	}
 
 	public boolean deleteUser(String login, String password) {
+		if(login.isEmpty()) {
+			return false;
+		}
+		
 		long userId = findUserCredentialId(login);
 		Credential credential = em.find(Credential.class, userId);
 		User user = em.find(User.class, userId);
@@ -63,6 +67,11 @@ public class UserManager implements UserInterface {
 	@Override
 	public boolean updateUser(String login, String password, String newPassword, String name,
 			String surname) {
+		
+		if(login.isEmpty()) {
+			return false;
+		}
+		
 		long userId = findUserCredentialId(login);
 		User user = em.find(User.class, userId);	
 		Credential credential = em.find(Credential.class, userId);
@@ -100,21 +109,29 @@ public class UserManager implements UserInterface {
 	}
 
 	@Override
-	public void banUser(String login) {
+	public boolean banUser(String login) {
+		if(login.isEmpty()) {
+			return false;
+		}
+		
 		Credential credential = em.find(Credential.class, findUserCredentialId(login));
 		
 		credential.setBanned(true);
 		
-		return ;
+		return true;
 	}
 
 	@Override
-	public void unBanUser(String login) {
+	public boolean unBanUser(String login) {
+		if(login.isEmpty()) {
+			return false;
+		}
+		
 		Credential credential = em.find(Credential.class, findUserCredentialId(login));
 		
 		credential.setBanned(false);
 		
-		return ;
+		return true;
 	}
 	
 	public long findUserId(String login) {	//Find user id using his login

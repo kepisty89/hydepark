@@ -98,15 +98,21 @@ public class UserBean {
 	}
 	
 	public String banUser() {
-		userManager.banUser(login);
-		
-		return "success";
+		if(userManager.banUser(login)) {
+			return "success";
+		}
+		else {
+			return "error";
+		}
 	}
 	
 	public String unBanUser() {
-		userManager.unBanUser(login);
-		
-		return "success";
+		if(userManager.unBanUser(login)) {
+			return "success";
+		}
+		else {
+			return "error";
+		}
 	}
 	
 	public String roleUser() {
