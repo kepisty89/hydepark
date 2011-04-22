@@ -1,7 +1,10 @@
 package domain;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
@@ -36,7 +39,7 @@ public class Lecture {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	@OneToMany//Not sure about this "mapped by", "fetch", "cascade" thing. [Daniel] 
+	@OneToMany(mappedBy="lecture", fetch=FetchType.EAGER, cascade=CascadeType.ALL) 
 	public List<LectureDetail> getLectureDetail() {
 		return lectureDetail;
 	}

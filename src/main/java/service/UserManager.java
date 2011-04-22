@@ -150,7 +150,7 @@ public class UserManager implements UserInterface {
 	
 	@SuppressWarnings("unchecked")
 	public List<Credential> readCredential() {
-		return em.createNamedQuery("credential.all").getResultList();	//Zwróæ listê wszystkich u¿ytkowników.
+		return em.createNamedQuery("credential.all").getResultList();	
 	}
 	
 	public long findUserCredentialId(String login)
@@ -166,7 +166,7 @@ public class UserManager implements UserInterface {
 		return -1;
 	}
 	
-	public boolean duplicate(String login) {	//SprawdŸ, czy nie zasz³a próba stworzenia u¿ytkownika, który ju¿ istnieje.
+	public boolean duplicate(String login) {	
 		List<Credential> listOfUsers = readCredential();
 		Iterator<Credential> it = listOfUsers.iterator();
 		while(it.hasNext()) {

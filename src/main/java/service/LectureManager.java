@@ -56,6 +56,12 @@ public class LectureManager implements LectureInterface {
 		Lecture lecture = em.find(Lecture.class, id); 
 		return lecture;
 	}
+	
+	@Override
+	public LectureDetail getLectureDetail(long id) {
+		LectureDetail lectureDetail = em.find(LectureDetail.class, id);
+		return lectureDetail;
+	}
 
 	@Override
 	public boolean updateLecture(String name, String description, Date startDate,
@@ -71,11 +77,31 @@ public class LectureManager implements LectureInterface {
 		//so we get Lectures instead of LectureDetails		
 		return em.createNamedQuery("lecture.all").getResultList();
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<LectureDetail> getAllLecturesDetails() {
+		return em.createNamedQuery("lecturedetail.all").getResultList();
+	}
 
 	@Override
 	public boolean deleteLecture(long id) {
-		// TODO [Daniel]
-		return false;
+		if(id == 0) {
+			return false;
+		}
+		Lecture lectureToDelete = getLecture(id);
+		em.remove(lectureToDelete);
+		return true;
+	}
+	
+	@Override
+	public boolean deleteLectureDetail(long id) {
+		if(id == 0) {
+			return false;
+		}
+		LectureDetail lectureDetailToDelete = getLectureDetail(id);
+		em.remove(lectureDetailToDelete);
+		return true;
 	}
 
 	@Override
@@ -118,6 +144,11 @@ public class LectureManager implements LectureInterface {
 		LectureDetail lectureDetail = em.find(LectureDetail.class, detailId);		
 		lectureDetail.setRate(rate);		
 		em.merge(lectureDetail);			
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Lecture> readLectures() {
+		return em.createNamedQuery("lecture.all").getResultList();	//Zwróæ listê wszystkich u¿ytkowników.
 	}
 		
 

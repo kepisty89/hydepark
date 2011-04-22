@@ -9,6 +9,8 @@ import javax.inject.Named;
 
 import domain.Attachment;
 import domain.FileType;
+import domain.Lecture;
+import domain.LectureDetail;
 import service.LectureInterface;
 
 @RequestScoped
@@ -17,14 +19,21 @@ public class LectureBean {
 	
 	@Inject
 	LectureInterface lectureManager;
-		
+	
+	private long id;
 	private String name;
 	private String description;	
 	private long teacherId;
 	private Date startDate;	
 	private List<Attachment> attachment;
 	
-		
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -77,9 +86,22 @@ public class LectureBean {
 		}
 	}
 	
-	public String deleteLecture(long id) {
-		lectureManager.deleteLecture(id);
-		return "home";
+	public String deleteLecture() {
+		if(lectureManager.deleteLecture(id)) {
+			return "success";
+		}
+		else {
+			return "error";
+		}
+	}
+	
+	public String deleteLectureDetail() {
+		if(lectureManager.deleteLectureDetail(id)) {
+			return "success";
+		}
+		else {
+			return "error";
+		}
 	}
 	
 	public String updateLecture(long id) {
@@ -90,6 +112,14 @@ public class LectureBean {
 	public String addAttachment(long lectureId, FileType AttachmentType){
 		lectureManager.addAttachment(lectureId, name, AttachmentType);
 		return "home";
+	}
+	
+	public List<Lecture> getAllLecture() {
+		return lectureManager.getAllLectures();
+	}
+	
+	public List<LectureDetail> getAllLectureDetail() {
+		return lectureManager.getAllLecturesDetails();
 	}
 	
 	

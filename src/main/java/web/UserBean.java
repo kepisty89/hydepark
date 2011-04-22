@@ -137,7 +137,7 @@ public class UserBean {
 	}
 	
 	public List<Credential> getAllCredentials() {
-		return userManager.readCredential();	//Zwróæ listê wszystkich u¿ytkowników.
+		return userManager.readCredential();
 	}
 	
 }

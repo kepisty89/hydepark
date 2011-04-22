@@ -3,13 +3,15 @@ package domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-//import javax.persistence.NamedQuery;
+import javax.persistence.NamedQuery;
 import domain.Lecture;
 
 @Entity
+@NamedQuery(name="lecturedetail.all", query="from LectureDetail")
 public class LectureDetail {
 	private long id;
 	private Date startDate;
@@ -44,7 +46,7 @@ public class LectureDetail {
 	public void setRate(int rate) {
 		this.rate = rate;
 	}
-	@ManyToOne//Not sure about this "mapped by", "fetch", "cascade" thing. [Daniel]
+	@ManyToOne(fetch=FetchType.LAZY)	
 	public Lecture getLecture() {
 		return lecture;
 	}
