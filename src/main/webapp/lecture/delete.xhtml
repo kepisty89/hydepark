@@ -11,7 +11,7 @@
 
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="id " />
+			<h:outputText value="lecture id " />
 			<h:selectOneMenu value="#{lectureBean.id}">
     			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
     		</h:selectOneMenu>

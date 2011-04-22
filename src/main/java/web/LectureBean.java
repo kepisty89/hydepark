@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import domain.Attachment;
+import domain.Credential;
 import domain.FileType;
 import domain.Lecture;
 import domain.LectureDetail;
@@ -104,9 +105,22 @@ public class LectureBean {
 		}
 	}
 	
-	public String updateLecture(long id) {
-		lectureManager.updateLecture(name, description, startDate, id);		
-		return "home";
+	public String updateLecture() {
+		if(lectureManager.updateLecture(id, name, description)) {
+			return "success";		
+		}
+		else {
+			return "error";
+		}
+	}
+	
+	public String updateLectureDetail() {
+		if(lectureManager.updateLectureDetail(id, startDate, teacherId)) {
+			return "success";
+		}
+		else {
+			return "error";
+		}
 	}
 	
 	public String addAttachment(long lectureId, FileType AttachmentType){
@@ -122,5 +136,7 @@ public class LectureBean {
 		return lectureManager.getAllLecturesDetails();
 	}
 	
-	
+	public List<Credential> getAllTeachersIds() {
+		return lectureManager.getAllTeachersIds();
+	}
 }

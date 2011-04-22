@@ -2,7 +2,7 @@ package domain;
 
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
+//import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
@@ -17,7 +17,7 @@ public class User {
 	private String surname;
 	private Credential credential;
 	private List<Participant> participant;
-	private Role role;
+//	private Role role;
 	
 	@Id
 	@GeneratedValue
@@ -53,13 +53,13 @@ public class User {
 	public void setParticipant(List<Participant> participant) {
 		this.participant = participant;
 	}
-	@Enumerated
-	public Role getRole() {
-		return role;
-	}
-	public void setRole(Role role) {
-		this.role = role;
-	}
+//	@Enumerated
+//	public Role getRole() {
+//		return role;
+//	}
+//	public void setRole(Role role) {
+//		this.role = role;
+//	}
 	public User(String name, String surname) {
 		super();
 		this.name = name;

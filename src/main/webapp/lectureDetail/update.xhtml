@@ -9,7 +9,24 @@
     
     <h2>Lecture Detail - Update</h2>
 
-	<p>TO DO</p>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="lecture detail id " />
+			<h:selectOneMenu value="#{lectureBean.id}">
+    			<f:selectItems value="#{lectureBean.allLectureDetail}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+    		</h:selectOneMenu>
+    		
+			<h:outputText value="new teacher id " />
+			<h:selectOneMenu value="#{lectureBean.teacherId}">
+    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+    		</h:selectOneMenu>
+
+		</h:panelGrid>
+
+		<h:panelGrid columns="2">
+			<h:commandButton value="updateLectureDetail" action="#{lectureBean.updateLectureDetail}" />
+		</h:panelGrid>
+	</h:form>
       
    </ui:define>
 </ui:composition>

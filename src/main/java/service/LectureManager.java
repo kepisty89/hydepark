@@ -6,9 +6,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import domain.Attachment;
+import domain.Credential;
 import domain.FileType;
 import domain.Lecture;
 import domain.LectureDetail;
+import domain.Role;
 import domain.User;
 
 @Stateless
@@ -64,10 +66,52 @@ public class LectureManager implements LectureInterface {
 	}
 
 	@Override
-	public boolean updateLecture(String name, String description, Date startDate,
-			long teacherId) {
-		// TODO [Daniel]
-		return false;
+	public boolean updateLecture(long lectureId, String name, String description) {
+		if(lectureId == 0) {
+			return false;
+		}
+		boolean changes = false;
+		Lecture lectureToUpdate = getLecture(lectureId);
+		if(!name.isEmpty()) {
+			lectureToUpdate.setName(name);
+			changes = true;
+		}
+		if(!description.isEmpty()) {
+			lectureToUpdate.setDescription(description);
+			changes = true;
+		}
+		if(changes) {
+			em.merge(lectureToUpdate);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean updateLectureDetail(long lectureId, Date startDate, long teacherId) {
+		if(lectureId == 0) {
+			return false;
+		}
+		boolean changes = false;
+		LectureDetail lectureDetailToUpdate = getLectureDetail(lectureId);
+//		if(startDate.after(lectureDetailToUpdate.getStartDate()) || startDate.before(lectureDetailToUpdate.getStartDate())) {
+//			lectureDetailToUpdate.setStartDate(startDate);
+//			changes = true;
+//		}
+		if(teacherId != 0) {
+			lectureDetailToUpdate.setTeacher(getUser(teacherId));
+			changes = true;
+		}
+		
+		if(changes) {
+			em.merge(lectureDetailToUpdate);
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	@Override
@@ -82,6 +126,12 @@ public class LectureManager implements LectureInterface {
 	@SuppressWarnings("unchecked")
 	public List<LectureDetail> getAllLecturesDetails() {
 		return em.createNamedQuery("lecturedetail.all").getResultList();
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Credential> getAllTeachersIds() {
+		return em.createQuery("from Credential where role=?1").setParameter(1, Role.TEACHER).getResultList();
 	}
 
 	@Override
@@ -150,6 +200,9 @@ public class LectureManager implements LectureInterface {
 	public List<Lecture> readLectures() {
 		return em.createNamedQuery("lecture.all").getResultList();	//Zwróæ listê wszystkich u¿ytkowników.
 	}
-		
+	
+	public User getUser(long id) {
+		return em.find(User.class, id);
+	}
 
 }
