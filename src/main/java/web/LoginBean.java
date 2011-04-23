@@ -1,19 +1,20 @@
 package web;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import service.LoginInterface;
 
-@RequestScoped
+@ApplicationScoped
 @Named
 public class LoginBean {
-	
+
 	@Inject 
 	LoginInterface loginManager;
 	
 	private boolean loggedIn = false;
+	private long id;
 	private String login;
 	private String password;
 	
@@ -22,6 +23,12 @@ public class LoginBean {
 	}
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getLogin() {
 		return login;
@@ -38,11 +45,12 @@ public class LoginBean {
 	
 	//ACTIONS.
 	public String login() {
-		if(login.isEmpty() || password.isEmpty()) {
+		if(password.isEmpty()) {
 			return "error";
 		}
-		else if(loginManager.login(login, password)) {
+		else if(loginManager.login(id, password)) {
 			loggedIn = true;
+			login = loginManager.convertIdToLogin(id);
 			return "success";
 		}
 		else {
@@ -50,4 +58,12 @@ public class LoginBean {
 		}
 	}
 	
+	public String logout() {
+		id = 0;
+		login = null;
+		password = null;
+		loggedIn = false;
+		return "success";
+	}
+		
 }

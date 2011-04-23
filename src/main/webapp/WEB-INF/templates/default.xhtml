@@ -54,9 +54,15 @@
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				
-				<ul>
-					<li><a href="/hydepark/login/login.jsf">logowanie</a><br />(potrzebna pomoc, guys!)</li>
-				</ul>
+				<p>
+					Zalogowano jako: <h:outputText value="#{loginBean.login}" />
+				</p>
+				
+				<a href="/hydepark/login/login.jsf">Zaloguj</a>
+				<h:form>
+					<h:commandLink value="Wyloguj" action="#{loginBean.logout}" />
+				</h:form>
+				
 				<hr></hr>
 				User:
 				<ul>
