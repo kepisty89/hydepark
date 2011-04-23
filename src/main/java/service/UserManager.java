@@ -43,7 +43,8 @@ public class UserManager implements UserInterface {
 		return true;
 	}
 
-	public boolean deleteUser(String login, String password) {
+	@Override
+	public boolean deleteUserForUser(String login, String password) {
 		if(login.isEmpty()) {
 			return false;
 		}
@@ -62,9 +63,24 @@ public class UserManager implements UserInterface {
 			return false;
 		}
 	}
+	
+	@Override
+	public boolean deleteUserForAdmin(String login) {
+		if(login.isEmpty()) {
+			return false;
+		}
+		
+		long userId = findUserCredentialId(login);
+		Credential credential = em.find(Credential.class, userId);
+		User user = em.find(User.class, userId);
+		
+		em.remove(user);
+		em.remove(credential);
+		return true;
+	}
 
 	@Override
-	public boolean updateUser(String login, String password, String newPassword, String name,
+	public boolean updateUserForUser(String login, String password, String newPassword, String name,
 			String surname) {
 		
 		if(login.isEmpty()) {
@@ -94,6 +110,33 @@ public class UserManager implements UserInterface {
 		{
 			return false;
 		}
+	}
+	
+	@Override
+	public boolean updateUserForAdmin(String login, String newPassword, String name,
+			String surname) {
+		
+		if(newPassword.isEmpty() && name.isEmpty() && surname.isEmpty()) {
+			return false;
+		}
+		
+		long userId = findUserCredentialId(login);
+		User user = em.find(User.class, userId);	
+		Credential credential = em.find(Credential.class, userId);
+		
+		
+		if(newPassword != "") {
+			credential.setPassword(newPassword);
+		}
+		if(name != "") {	
+			user.setName(name);
+		}
+		if(surname != "") {
+			user.setSurname(surname);
+		}
+		em.merge(user);	
+		em.merge(credential);
+		return true;
 	}
 
 	@Override

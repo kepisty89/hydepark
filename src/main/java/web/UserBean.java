@@ -63,67 +63,89 @@ public class UserBean {
 	//Actions
 	public String createUser() {
 		if(name.isEmpty() || surname.isEmpty() || login.isEmpty() || password.isEmpty()) {
-			return "error";
+			return "/panel/error";
 		}
 		else if (userManager.duplicate(login))
 		{
-			return "error";
+			return "/panel/error";
 		}
 		else {
 			userManager.createUser(login, password, name, surname);
-			return "success";
+			return "/panel/success";
 		}
 	}
 	
-	public String deleteUser() {
-		if (userManager.deleteUser(login, password))
+	public String deleteUserForUser() {
+		if (userManager.deleteUserForUser(login, password))
 		{
-			return "success";
+			return "/panel/success";
 		}
 		else 
 		{
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
-	public String updateUser() {
-		if (userManager.updateUser(login, password, newPassword, name, surname))
+	public String deleteUserForAdmin() {
+		if (userManager.deleteUserForAdmin(login))
 		{
-			return "success";
+			return "/panel/success";
+		}
+		else 
+		{
+			return "/panel/error";
+		}
+	}
+	
+	public String updateUserForUser() {
+		if (userManager.updateUserForUser(login, password, newPassword, name, surname))
+		{
+			return "/panel/success";
 		}
 		else
 		{
-			return "error";
+			return "/panel/error";
+		}
+	}
+	
+	public String updateUserForAdmin() {
+		if (userManager.updateUserForAdmin(login, newPassword, name, surname))
+		{
+			return "/panel/success";
+		}
+		else
+		{
+			return "/panel/error";
 		}
 	}
 	
 	public String banUser() {
 		if(userManager.banUser(login)) {
-			return "success";
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String unBanUser() {
 		if(userManager.unBanUser(login)) {
-			return "success";
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String roleUser() {
 		if(login.isEmpty() || password.isEmpty()) {
-			return "error";
+			return "/panel/error";
 		}
 		if(userManager.setRole(login, password, role)) {
-			return "success";
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	

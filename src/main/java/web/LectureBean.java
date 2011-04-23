@@ -79,53 +79,53 @@ public class LectureBean {
 	//Actions
 	public String createLecture() {
 		if(name.isEmpty() || description.isEmpty()) {
-			return "error";
+			return "/panel/error";
 		}
 		else {
 			lectureManager.createLecture(name, description, startDate, teacherId);			
-			return "home";
+			return "/panel/success";
 		}
 	}
 	
 	public String deleteLecture() {
 		if(lectureManager.deleteLecture(id)) {
-			return "success";
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String deleteLectureDetail() {
 		if(lectureManager.deleteLectureDetail(id)) {
-			return "success";
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String updateLecture() {
 		if(lectureManager.updateLecture(id, name, description)) {
-			return "success";		
+			return "/panel/success";		
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String updateLectureDetail() {
 		if(lectureManager.updateLectureDetail(id, startDate, teacherId)) {
-			return "success";
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String addAttachment(long lectureId, FileType AttachmentType){
 		lectureManager.addAttachment(lectureId, name, AttachmentType);
-		return "home";
+		return "/panel/success";
 	}
 	
 	public List<Lecture> getAllLecture() {

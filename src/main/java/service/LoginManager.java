@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import service.LoginInterface;
 import domain.Credential;
+import domain.Role;
 
 @Stateful
 public class LoginManager implements LoginInterface {
@@ -28,5 +29,12 @@ public class LoginManager implements LoginInterface {
 		Credential credential = em.find(Credential.class, id);
 		return credential.getLogin();
 	}
+
+	@Override
+	public Role convertIdToRole(long id) {
+		Credential credential = em.find(Credential.class, id);
+		return credential.getRole();
+	}
+	
 	
 }
