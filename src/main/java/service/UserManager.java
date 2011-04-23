@@ -36,7 +36,6 @@ public class UserManager implements UserInterface {
 		credential.setBanned(false);
 		user.setCredential(credential);
 		user.setParticipant(participant);
-//		user.setRole(role);
 		
 		em.persist(user);
 		em.persist(credential);

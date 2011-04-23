@@ -17,7 +17,6 @@ public class User {
 	private String surname;
 	private Credential credential;
 	private List<Participant> participant;
-//	private Role role;
 	
 	@Id
 	@GeneratedValue
@@ -53,13 +52,6 @@ public class User {
 	public void setParticipant(List<Participant> participant) {
 		this.participant = participant;
 	}
-//	@Enumerated
-//	public Role getRole() {
-//		return role;
-//	}
-//	public void setRole(Role role) {
-//		this.role = role;
-//	}
 	public User(String name, String surname) {
 		super();
 		this.name = name;
@@ -67,7 +59,5 @@ public class User {
 	}
 	public User() {
 		super();
-	}
-	
-	
+	}	
 }

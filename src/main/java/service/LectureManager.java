@@ -198,7 +198,7 @@ public class LectureManager implements LectureInterface {
 	
 	@SuppressWarnings("unchecked")
 	public List<Lecture> readLectures() {
-		return em.createNamedQuery("lecture.all").getResultList();	//Zwróæ listê wszystkich u¿ytkowników.
+		return em.createNamedQuery("lecture.all").getResultList();
 	}
 	
 	public User getUser(long id) {
