@@ -1,19 +1,28 @@
 package web;
 
-import javax.enterprise.context.ApplicationScoped;
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import domain.Role;
-import service.LoginInterface;
-import service.UserManager;
 
-@ApplicationScoped
+import service.*;
+import domain.Role;
+
+@SessionScoped
 @Named
-public class LoginBean {
+public class LoginBean implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Inject 
 	LoginInterface loginManager;
-	UserManager userManager;
+	
+	@Inject
+	UserInterface userManager;
 	
 	private boolean loggedIn = false;
 	private long id;

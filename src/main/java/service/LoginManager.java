@@ -1,13 +1,13 @@
 package service;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import service.LoginInterface;
+
 import domain.Credential;
 import domain.Role;
 
-@Stateful
+@Stateless
 public class LoginManager implements LoginInterface {
 		
 	@PersistenceContext

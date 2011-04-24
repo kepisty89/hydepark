@@ -39,15 +39,14 @@
 				<!-- *********************************** -->
 				
 				<p>
-					<h:outputText value="Witaj #{loginBean.login}" />
+					<h:outputText value="Witaj #{loginBean.login}"  rendered="#{loginBean.loggedIn}"/>
 				</p>
 				
 				<h:form>
-					<h:commandLink value="Zaloguj" action="/panel/login"/>
-					|
-					<h:commandLink value="Wyloguj" action="#{loginBean.logout}" />
+					<h:commandLink value="Zaloguj" action="/panel/login" rendered="#{!loginBean.loggedIn}"/>
+					<h:commandLink value="Wyloguj" action="#{loginBean.logout}" rendered="#{loginBean.loggedIn}"/>
 					<br /><br />
-					<h:commandLink value="Zarejestruj" action="/user/createForAll" />
+					<h:commandLink value="Zarejestruj" action="/user/createForAll" rendered="#{!loginBean.loggedIn}"/>
 				</h:form>
 				
 				<hr></hr>
