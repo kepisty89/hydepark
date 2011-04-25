@@ -27,7 +27,7 @@ public class LectureBean {
 	private long teacherId;
 	private Date startDate;	
 	private List<Attachment> attachment;
-	
+
 	public long getId() {
 		return id;
 	}

@@ -18,6 +18,7 @@ public class LectureDetail {
 	private User teacher;
 	private int rate;
 	private Lecture lecture;
+	private int limit;
 	
 	@Id
 	@GeneratedValue
@@ -46,12 +47,19 @@ public class LectureDetail {
 	public void setRate(int rate) {
 		this.rate = rate;
 	}
-	@ManyToOne(fetch=FetchType.LAZY)	
+	@ManyToOne(fetch=FetchType.EAGER)	
 	public Lecture getLecture() {
 		return lecture;
 	}
 	public void setLecture(Lecture lecture) {
 		this.lecture = lecture;
+	}
+	
+	public int getLimit() {
+		return limit;
+	}
+	public void setLimit(int limit) {
+		this.limit = limit;
 	}
 	
 	public LectureDetail() {
