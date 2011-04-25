@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content" style="font-size: 0.7em;">
+    
+    <h2>Lecture - Create</h2>
+
+	<h:form>
+		<h:panelGrid columns="2">
+							
+			<h:outputText value="Nazwa wykładu:" />
+			<p:inputText value="#{lectureBean.name}" />
+			
+			<h:outputText value="Opis wykładu:" />
+			<p:inputTextarea value="#{lectureBean.description}" />
+							
+			<h:outputText value="Data:" />
+			<p:calendar style="font-size: 0.9em;" value="#{lectureDetailBean.startDate}" />
+			
+			<h:outputText value="Id wykładowcy:" />			
+			<h:selectOneMenu value="#{lectureBean.teacherId}">
+    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+    		</h:selectOneMenu>
+			
+		</h:panelGrid>
+
+		<h:panelGrid columns="2">
+			<h:commandButton value="createLecture" action="#{lectureBean.createLecture}" />
+		</h:panelGrid>
+	</h:form>
+      
+   </ui:define>
+</ui:composition>

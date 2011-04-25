@@ -140,4 +140,8 @@ public class UserBean {
 		return userManager.readCredential();
 	}
 	
+	public List<Credential> getAllTeachers() {
+		return userManager.readTeacherCredential();
+	}
+	
 }

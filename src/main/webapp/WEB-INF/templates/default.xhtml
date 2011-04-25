@@ -7,14 +7,13 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 	<h:head>
-
+		<title>HydePark - v0.2 - Projekt zespołowy</title>
 	</h:head>
 	
 	<h:body>
 	
-		<p:layout fullPage="true">
-			
-			<p:layoutUnit position="top" height="75" resizable="false" closable="false" collapsible="false">
+		<p:layout fullPage="true">			
+			<p:layoutUnit position="top" height="72" resizable="false" closable="false" collapsible="false">
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				
@@ -22,13 +21,11 @@
 				
 				<!-- *********************************** -->
 				<!-- *********************************** -->
-				<p>
-					HydePark
-				</p>
+				<img src="resources/gfx/sign2.png" alt="header" />
 				
 			</p:layoutUnit>
 			
-			<p:layoutUnit position="bottom" height="75" resizable="false" closable="false" collapsible="false">
+			<p:layoutUnit style="font-size: 0.7em;" position="bottom" height="75" resizable="false" closable="false" collapsible="false">
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				
@@ -40,12 +37,12 @@
 				<p>
 					Autorzy: Artur Rybak, Łukasz Kępiński, Daniel Landowski
 					<br />
-					Przedmiot: Projekt zespołowy
+					Przedmiot: Projekt zespołowy.
 				</p>
 				
 			</p:layoutUnit>
 			
-			<p:layoutUnit position="left" width="200" header="Menu" resizable="false" closable="false" collapsible="false" scrollable="true">
+			<p:layoutUnit style="font-size: 0.7em;" position="left" width="200" header="Menu" resizable="false" closable="false" collapsible="false" scrollable="true">
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				
@@ -75,10 +72,11 @@
 					<li><a href="/hydepark/user/role.jsf">Role</a></li>
 				</ul>
 				<hr></hr>
-				Lecture:
+				Wykłady (ogólnie):
 				<ul>
-					<li><a href="/hydepark/lecture/update.jsf">Update</a></li>
-					<li><a href="/hydepark/lecture/delete.jsf">Delete</a></li>
+					<li><a href="/hydepark/lecture/create.jsf">Dodaj wykład</a></li>
+					<li><a href="/hydepark/lecture/update.jsf">Edytuj wykład</a></li>
+					<li><a href="/hydepark/lecture/delete.jsf">Usuń wykład</a></li>
 				</ul>
 				<hr></hr>
 				Lecture Detail:
@@ -90,7 +88,7 @@
 				
 			</p:layoutUnit>
 			
-			<p:layoutUnit position="right" width="200" header="News" resizable="false" closable="false" collapsible="false">
+			<p:layoutUnit style="font-size: 0.8em;" position="right" width="200" header="News" resizable="false" closable="false" collapsible="false">
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				
@@ -107,7 +105,7 @@
 				
 			</p:layoutUnit>
 			
-			<p:layoutUnit position="center" scrollable="true">
+			<p:layoutUnit style="font-size: 0.7em;" position="center" scrollable="true">
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				

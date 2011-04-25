@@ -31,6 +31,12 @@
       <param-name>facelets.DEVELOPMENT</param-name>
       <param-value>true</param-value>
    </context-param>
+   
+   <!-- Prime Faces theming -->
+   <context-param>  
+	   <param-name>primefaces.THEME</param-name>  
+	   <param-value>humanity</param-value>  
+   </context-param>  
 
    <persistence-unit-ref>
       <persistence-unit-ref-name>widgets/pu</persistence-unit-ref-name>
