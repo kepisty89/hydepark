@@ -152,6 +152,14 @@ public class UserManager implements UserInterface {
 		return em.createNamedQuery("credential.all").getResultList();	
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Credential> readTeacherCredential() {
+		return em.createQuery(
+				"from Credential where Role=?1"				
+				).setParameter(1, "Teacher")
+				.getResultList();	
+	}
+	
 	public long findUserCredentialId(String login)
 	{
 		List<Credential> listOfUsersCredentials = readCredential();
@@ -164,6 +172,8 @@ public class UserManager implements UserInterface {
 		}
 		return -1;
 	}
+	
+	
 	
 	public boolean duplicate(String login) {	
 		List<Credential> listOfUsers = readCredential();

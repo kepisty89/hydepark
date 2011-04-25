@@ -15,5 +15,6 @@ public interface UserInterface {
 	public boolean unBanUser(String login);
 	public boolean duplicate(String name);
 	public List<Credential> readCredential();
+	public List<Credential> readTeacherCredential();
 	public boolean setRole(String login, String password, String role);
 }
