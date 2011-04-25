@@ -21,24 +21,10 @@
 				
 				<!-- *********************************** -->
 				<!-- *********************************** -->
-				<img src="resources/gfx/sign2.png" alt="header" />
-				
-			</p:layoutUnit>
-			
-			<p:layoutUnit style="font-size: 0.7em;" position="bottom" height="75" resizable="false" closable="false" collapsible="false">
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- BOTTOM -->
-				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<p>
-					Autorzy: Artur Rybak, Łukasz Kępiński, Daniel Landowski
+				<h:form>
 					<br />
-					Przedmiot: Projekt zespołowy.
-				</p>
+					&nbsp; &nbsp; <h:commandLink value="Hydepark" action="/home"/>
+				</h:form>
 				
 			</p:layoutUnit>
 			
@@ -52,59 +38,26 @@
 				<!-- *********************************** -->
 				
 				<p>
-					Zalogowano jako: <h:outputText value="#{loginBean.login}" />
+					<h:outputText value="Witaj #{loginBean.login}"  rendered="#{loginBean.loggedIn}"/>
 				</p>
 				
-				<a href="/hydepark/login/login.jsf">Zaloguj</a>
 				<h:form>
-					<h:commandLink value="Wyloguj" action="#{loginBean.logout}" />
+					<h:commandLink value="Zaloguj" action="/panel/login" rendered="#{!loginBean.loggedIn}"/>
+					<h:commandLink value="Wyloguj" action="#{loginBean.logout}" rendered="#{loginBean.loggedIn}"/>
+					<br /><br />
+					<h:commandLink value="Zarejestruj" action="/user/createForAll" rendered="#{!loginBean.loggedIn}"/>
 				</h:form>
 				
 				<hr></hr>
-				User:
-				<ul>
-					<li><a href="/hydepark/user/create.jsf">Create</a></li>
-					<li><a href="/hydepark/user/read.jsf">Read</a></li>
-					<li><a href="/hydepark/user/update.jsf">Update</a></li>
-					<li><a href="/hydepark/user/delete.jsf">Delete</a></li>
-					<li><a href="/hydepark/user/ban.jsf">Ban</a></li>
-					<li><a href="/hydepark/user/unban.jsf">Unban</a></li>
-					<li><a href="/hydepark/user/role.jsf">Role</a></li>
-				</ul>
-				<hr></hr>
-				Wykłady (ogólnie):
-				<ul>
-					<li><a href="/hydepark/lecture/create.jsf">Dodaj wykład</a></li>
-					<li><a href="/hydepark/lecture/update.jsf">Edytuj wykład</a></li>
-					<li><a href="/hydepark/lecture/delete.jsf">Usuń wykład</a></li>
-				</ul>
-				<hr></hr>
-				Lecture Detail:
-				<ul>
-					<li><a href="/hydepark/lectureDetail/update.jsf">Update</a></li>
-					<li><a href="/hydepark/lectureDetail/delete.jsf">Delete</a></li>
-				</ul>
-				<hr></hr>
+				<h:form><h:commandLink value="User panel" action="#{loginBean.logAsUser}" /></h:form>
+				<br />
+				<h:form><h:commandLink value="Teacher panel" action="#{loginBean.logAsTeacher}" /></h:form>
+				<br />
+				<h:form><h:commandLink value="Admin panel" action="#{loginBean.logAsAdmin}" /></h:form>
+				<br />
 				
 			</p:layoutUnit>
-			
-			<p:layoutUnit style="font-size: 0.8em;" position="right" width="200" header="News" resizable="false" closable="false" collapsible="false">
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- RIGHT -->
-				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-			
-				<p>
-					20.04.2011
-					<br />
-					Początek prac z Prime Faces.
-				</p>
-				
-			</p:layoutUnit>
-			
+						
 			<p:layoutUnit style="font-size: 0.7em;" position="center" scrollable="true">
 				<!-- *********************************** -->
 				<!-- *********************************** -->

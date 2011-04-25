@@ -7,12 +7,12 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import service.LectureInterface;
 import domain.Attachment;
 import domain.Credential;
 import domain.FileType;
 import domain.Lecture;
 import domain.LectureDetail;
-import service.LectureInterface;
 
 @RequestScoped
 @Named
@@ -27,7 +27,7 @@ public class LectureBean {
 	private long teacherId;
 	private Date startDate;	
 	private List<Attachment> attachment;
-	
+
 	public long getId() {
 		return id;
 	}
@@ -79,53 +79,53 @@ public class LectureBean {
 	//Actions
 	public String createLecture() {
 		if(name.isEmpty() || description.isEmpty()) {
-			return "error";
+			return "/panel/error";
 		}
 		else {
 			lectureManager.createLecture(name, description, startDate, teacherId);			
-			return "home";
+			return "/panel/success";
 		}
 	}
 	
 	public String deleteLecture() {
 		if(lectureManager.deleteLecture(id)) {
-			return "success";
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String deleteLectureDetail() {
 		if(lectureManager.deleteLectureDetail(id)) {
-			return "success";
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String updateLecture() {
 		if(lectureManager.updateLecture(id, name, description)) {
-			return "success";		
+			return "/panel/success";		
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String updateLectureDetail() {
 		if(lectureManager.updateLectureDetail(id, startDate, teacherId)) {
-			return "success";
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String addAttachment(long lectureId, FileType AttachmentType){
 		lectureManager.addAttachment(lectureId, name, AttachmentType);
-		return "home";
+		return "/panel/success";
 	}
 	
 	public List<Lecture> getAllLecture() {

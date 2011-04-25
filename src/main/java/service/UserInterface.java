@@ -9,8 +9,10 @@ public interface UserInterface {
 	public boolean createUser(String login, String password, String name, String surname);
 	public User getUser(long id);
 	public List<User> getAllUsers();
-	public boolean deleteUser(String login, String password);
-	public boolean updateUser(String login, String password, String newPassword, String name, String surname);
+	public boolean deleteUserForUser(String login, String password);
+	public boolean deleteUserForAdmin(String login);
+	public boolean updateUserForUser(String login, String password, String newPassword, String name, String surname);
+	public boolean updateUserForAdmin(String login, String newPassword, String name, String surname);
 	public boolean banUser(String login);
 	public boolean unBanUser(String login);
 	public boolean duplicate(String name);

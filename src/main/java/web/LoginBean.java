@@ -1,22 +1,34 @@
 package web;
 
-import javax.enterprise.context.ApplicationScoped;
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import service.LoginInterface;
+import service.*;
+import domain.Role;
 
-@ApplicationScoped
+@SessionScoped
 @Named
-public class LoginBean {
+public class LoginBean implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Inject 
 	LoginInterface loginManager;
+	
+	@Inject
+	UserInterface userManager;
 	
 	private boolean loggedIn = false;
 	private long id;
 	private String login;
 	private String password;
+	private Role role;
 	
 	public boolean isLoggedIn() {
 		return loggedIn;
@@ -42,28 +54,64 @@ public class LoginBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public Role getRole() {
+		return role;
+	}
 	
 	//ACTIONS.
 	public String login() {
 		if(password.isEmpty()) {
-			return "error";
+			return "/panel/error";
 		}
 		else if(loginManager.login(id, password)) {
 			loggedIn = true;
 			login = loginManager.convertIdToLogin(id);
-			return "success";
+			role = loginManager.convertIdToRole(id);
+			return "/panel/success";
 		}
 		else {
-			return "error";
+			return "/panel/error";
 		}
 	}
 	
 	public String logout() {
+		if(!loggedIn) {
+			return "/panel/error";
+		}
 		id = 0;
 		login = null;
 		password = null;
 		loggedIn = false;
-		return "success";
+		return "/panel/success";
 	}
+	
+	public String logAsUser() {
+		if(loggedIn) {
+			return "/panel/user";
+		}
+		else {
+			return "/panel/login";
+		}
+	}
+	public String logAsTeacher() {
+		if(loggedIn && (role.equals(Role.TEACHER) || role.equals(Role.ADMIN))) {
+			return "/panel/teacher";
+		}
+		else {
+			return "/panel/login";
+		}
+	}
+	public String logAsAdmin() {
+		if(loggedIn && role.equals(Role.ADMIN)) {
+			return "/panel/admin";
+		}
+		else {
+			return "/panel/login";
+		}
+	}
+	
 		
 }

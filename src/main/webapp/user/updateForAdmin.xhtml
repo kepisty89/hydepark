@@ -7,7 +7,7 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>User - Delete</h2>
+    <h2>User - Update</h2>
 
 	<h:form>
 		<h:panelGrid columns="2">
@@ -16,12 +16,18 @@
     			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
     		</h:selectOneMenu>
 			
-			<h:outputText value="password " />
-			<h:inputSecret value="#{userBean.password}" />
+			<h:outputText value="new password " />
+			<h:inputSecret value="#{userBean.newPassword}" />
+
+			<h:outputText value="name " />
+			<h:inputText value="#{userBean.name}" />
+
+			<h:outputText value="surname " />
+			<h:inputText value="#{userBean.surname}" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="2">
-			<h:commandButton value="deleteUser" action="#{userBean.deleteUser}" />
+			<h:commandButton value="updateUser" action="#{userBean.updateUserForAdmin}" />
 		</h:panelGrid>
 	</h:form>
       
