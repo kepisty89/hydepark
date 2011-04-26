@@ -7,11 +7,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import domain.Lecture;
 
 @Entity
-@NamedQuery(name="lecturedetail.all", query="from LectureDetail")
+@NamedQueries({@NamedQuery(name="lecturedetail.all", query="from LectureDetail order by startDate"),
+@NamedQuery(name="lectureDetail.byUser", query="from LectureDetail WHERE teacher.id = :uid")})
 public class LectureDetail {
 	private long id;
 	private Date startDate;

@@ -24,23 +24,30 @@ public class LoginBean implements Serializable{
 	@Inject
 	UserInterface userManager;
 	
-	private boolean loggedIn = false;
-	private long id;
+	private static boolean loggedIn = false;
+	private static long id;
 	private String login;
 	private String password;
 	private Role role;
+	
+	public static long getCurrentUID() {
+		if(loggedIn == true)
+			return id;
+		else
+			return (Long) null;
+	}
 	
 	public boolean isLoggedIn() {
 		return loggedIn;
 	}
 	public void setLoggedIn(boolean loggedIn) {
-		this.loggedIn = loggedIn;
+		LoginBean.loggedIn = loggedIn;
 	}
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
-		this.id = id;
+		LoginBean.id = id;
 	}
 	public String getLogin() {
 		return login;

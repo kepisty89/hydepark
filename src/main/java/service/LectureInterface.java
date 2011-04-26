@@ -21,4 +21,5 @@ public interface LectureInterface {
 	boolean deleteLectureDetail(long id);
 	boolean deleteAttachment(long lectureId, long id);
 	boolean addAttachment(long lectureId, String name, FileType type);
+	public List<LectureDetail> userLectureDetails(long uid);
 }

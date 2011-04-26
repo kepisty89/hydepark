@@ -204,5 +204,9 @@ public class LectureManager implements LectureInterface {
 	public User getUser(long id) {
 		return em.find(User.class, id);
 	}
+	
+	public List<LectureDetail> userLectureDetails(long uid) {
+		return em.createNamedQuery("lectureDetail.byUser").setParameter("uid", uid).getResultList();
+	}
 
 }
