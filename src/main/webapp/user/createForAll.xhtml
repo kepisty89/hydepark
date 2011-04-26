@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
    xmlns:p="http://primefaces.prime.com.tr/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -12,16 +12,16 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputText value="login " />
-			<h:inputText value="#{userBean.login}" />
+			<p:inputText value="#{userBean.login}" />
 
 			<h:outputText value="password " />
-			<h:inputSecret value="#{userBean.password}"/>
+			<p:password value="#{userBean.password}" feedback="true"/>
 
 			<h:outputText value="name " />
-			<h:inputText value="#{userBean.name}" />
+			<p:inputText value="#{userBean.name}" />
 
 			<h:outputText value="surname " />
-			<h:inputText value="#{userBean.surname}" />
+			<p:inputText value="#{userBean.surname}" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="2">

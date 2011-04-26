@@ -9,31 +9,28 @@
 	<h:head>
 		<title>HydePark - v0.2 - Projekt zespołowy</title>
 	</h:head>
-	
-	<h:body>
-	
+		
+	<h:body>	
 		<p:layout fullPage="true">			
-			<p:layoutUnit position="top" height="72" resizable="false" closable="false" collapsible="false">
+			<p:layoutUnit style="background-image:url('/hydepark/resources/gfx/header_background.png');" 
+						  position="top" height="74" resizable="false" closable="false" collapsible="false">
 				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- HEADER -->
-				
+				<!-- *********************************** -->				
+				<!-- HEADER -->				
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				<h:form>
-					<br />
-					&nbsp; &nbsp; <h:commandLink value="Hydepark" action="/home"/>
+					<h:commandLink action="/home">
+						<img src="/hydepark/resources/gfx/sign2.png" alt="header" />
+					</h:commandLink>
 				</h:form>
 				
 			</p:layoutUnit>
 			
 			<p:layoutUnit style="font-size: 0.7em;" position="left" width="200" header="Menu" resizable="false" closable="false" collapsible="false" scrollable="true">
 				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- LEFT -->
-				
+				<!-- *********************************** -->				
+				<!-- LEFT -->				
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				
@@ -46,9 +43,11 @@
 					<h:commandLink value="Wyloguj" action="#{loginBean.logout}" rendered="#{loginBean.loggedIn}"/>
 					<br /><br />
 					<h:commandLink value="Zarejestruj" action="/user/createForAll" rendered="#{!loginBean.loggedIn}"/>
+					<br />
 				</h:form>
 				
 				<hr></hr>
+				<br />
 				<h:form><h:commandLink value="User panel" action="#{loginBean.logAsUser}" /></h:form>
 				<br />
 				<h:form><h:commandLink value="Teacher panel" action="#{loginBean.logAsTeacher}" /></h:form>
@@ -60,10 +59,8 @@
 						
 			<p:layoutUnit style="font-size: 0.7em;" position="center" scrollable="true">
 				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<!-- CENTER -->
-				
+				<!-- *********************************** -->				
+				<!-- CENTER -->				
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				

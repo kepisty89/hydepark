@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
    xmlns:p="http://primefaces.prime.com.tr/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -7,17 +7,17 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>Login</h2>
+    <h2>Zaloguj się:</h2>
 
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="user login " />
+			<h:outputText value="Login: " />
 			<h:selectOneMenu value="#{loginBean.id}">
     			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.id}" />
     		</h:selectOneMenu>
 			
-			<h:outputText value="password " />
-			<h:inputSecret value="#{loginBean.password}" />
+			<h:outputText value="Hasło: " />
+			<p:password value="#{loginBean.password}" feedback="false" />
 		</h:panelGrid>
 		
 		<h:panelGrid columns="2">
