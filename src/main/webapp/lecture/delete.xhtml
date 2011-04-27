@@ -5,22 +5,22 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
-   <ui:define name="content">
-    
-    <h2>Lecture - Delete</h2>
+   <ui:define name="content">    
 
+<p:panel header="Usuń wykład">
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="lecture id " />
+			<h:outputText value="Id wykładu: " />
 			<h:selectOneMenu value="#{lectureBean.id}">
     			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
     		</h:selectOneMenu>
 		</h:panelGrid>
 
 		<h:panelGrid columns="2">
-			<h:commandButton value="deleteLecture" action="#{lectureBean.deleteLecture}" />
+			<p:commandButton value="Usuń wykład" action="#{lectureBean.deleteLecture}" ajax="false" />
 		</h:panelGrid>
 	</h:form>
+</p:panel>
       
    </ui:define>
 </ui:composition>

@@ -22,7 +22,7 @@ public class LectureManager implements LectureInterface {
 	/* Interface methods */	
 	@Override
 	public boolean createLecture(String name, String description, Date startDate,
-			long teacherId) {
+			long teacherId) {		
 		
 		//create new LECTURE object depending on data
 		Lecture lecture = new Lecture(name, description);
@@ -48,9 +48,8 @@ public class LectureManager implements LectureInterface {
 		//set lectureDetail
 		savedLecture.setLectureDetail(savedLecture.getLectureDetail());
 		
-		em.merge(savedLecture);			
-		
-		return false;
+		em.merge(savedLecture);					
+		return true;
 	}
 
 	@Override

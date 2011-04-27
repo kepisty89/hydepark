@@ -5,29 +5,31 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
-   <ui:define name="content" style="font-size: 0.7em;">
-    
-    <h2>Lecture - Create</h2>
+   <ui:define name="content" style="font-size: 0.7em;">       
 
-	<h:form>
-		<h:panelGrid columns="2">
-							
-			<h:outputText value="Nazwa wykładu:" />
-			<p:inputText value="#{lectureBean.name}" />
-			
-			<h:outputText value="Opis wykładu:" />
-			<p:inputTextarea value="#{lectureBean.description}" />									
-			
-			<h:outputText value="Id wykładowcy:" />			
-			<h:selectOneMenu value="#{lectureBean.teacherId}">
-    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
-    		</h:selectOneMenu>
-			
-		</h:panelGrid>
-
-		<h:panelGrid columns="2">
-			<h:commandButton value="createLecture" action="#{lectureBean.createLecture}" />
-		</h:panelGrid>
+	<h:form>		
+		<p:panel header="Dodaj wykład">
+			<h:panelGrid columns="2">
+								
+				<h:outputText value="Nazwa wykładu:" />
+				<p:inputText value="#{lectureBean.name}" />
+				
+				<h:outputText value="Opis wykładu:" />
+				<p:inputTextarea value="#{lectureBean.description}" />
+				
+				<h:outputText value="Data:" />
+				<p:calendar value="#{lectureBean.startDate}" />									
+				
+				<h:outputText value="Wybierz id wykładowcy:" />			
+				<h:selectOneMenu value="#{lectureBean.teacherId}">
+	    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+	    		</h:selectOneMenu>
+				
+				<p:commandButton value="Dodaj" action="#{lectureBean.createLecture}" ajax="false" />
+			</h:panelGrid>	
+		</p:panel>
+	
+	
 	</h:form>
       
    </ui:define>

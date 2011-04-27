@@ -13,7 +13,7 @@ import domain.Lecture;
 
 @Entity
 @NamedQueries({@NamedQuery(name="lecturedetail.all", query="from LectureDetail order by startDate"),
-@NamedQuery(name="lectureDetail.byUser", query="from LectureDetail WHERE teacher.id = :uid")})
+			   @NamedQuery(name="lectureDetail.byUser", query="from LectureDetail WHERE teacher.id = :uid")})
 public class LectureDetail {
 	private long id;
 	private Date startDate;
@@ -72,6 +72,8 @@ public class LectureDetail {
 		this.startDate = startDate;
 		this.teacher = teacher;
 		this.lecture = lecture;
+		this.rate = 1;
+		this.limit = 50;
 	}
 	
 	

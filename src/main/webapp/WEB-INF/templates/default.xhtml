@@ -27,37 +27,35 @@
 				
 			</p:layoutUnit>
 			
-			<p:layoutUnit style="font-size: 0.7em;" position="left" width="200" header="Menu" resizable="false" closable="false" collapsible="false" scrollable="true">
+			<p:layoutUnit style="font-size: 0.7em;" position="left" width="168" header="Menu" resizable="false" closable="false" collapsible="false" scrollable="true">
 				<!-- *********************************** -->
 				<!-- *********************************** -->				
 				<!-- LEFT -->				
 				<!-- *********************************** -->
 				<!-- *********************************** -->
 				
-				<p>
-					<h:outputText value="Witaj #{loginBean.login}"  rendered="#{loginBean.loggedIn}"/>
-				</p>
+				<p>					
+					<h:outputText value="  Witaj #{loginBean.login}!"  rendered="#{loginBean.loggedIn}"/>
+				</p>														
 				
-				<h:form>
-					<h:commandLink value="Zaloguj" action="/panel/login" rendered="#{!loginBean.loggedIn}"/>
-					<h:commandLink value="Wyloguj" action="#{loginBean.logout}" rendered="#{loginBean.loggedIn}"/>
-					<br /><br />
-					<h:commandLink value="Zarejestruj" action="/user/createForAll" rendered="#{!loginBean.loggedIn}"/>
-					<br />
+				<h:form>				
+					<p:menu id="log">  
+				        <p:submenu label="Logowanie">  
+				           	<p:menuitem><h:commandLink value="Zaloguj" action="/panel/login" rendered="#{!loginBean.loggedIn}"/></p:menuitem>
+							<p:menuitem><h:commandLink value="Wyloguj" action="#{loginBean.logout}" rendered="#{loginBean.loggedIn}"/></p:menuitem>
+							<p:menuitem><h:commandLink value="Zarejestruj" action="/user/createForAll" rendered="#{!loginBean.loggedIn}"/></p:menuitem>
+				        </p:submenu>  
+				        <p:submenu label="Panel">  
+				            <p:menuitem><h:commandLink value="User panel" action="#{loginBean.logAsUser}" /></p:menuitem>
+				            <p:menuitem><h:commandLink value="Teacher panel" action="#{loginBean.logAsTeacher}" /></p:menuitem>						
+							<p:menuitem><h:commandLink value="Admin panel" action="#{loginBean.logAsAdmin}" /></p:menuitem>  
+				        </p:submenu>  			         
+	    			</p:menu>      						
 				</h:form>
-				
-				<hr></hr>
-				<br />
-				<h:form><h:commandLink value="User panel" action="#{loginBean.logAsUser}" /></h:form>
-				<br />
-				<h:form><h:commandLink value="Teacher panel" action="#{loginBean.logAsTeacher}" /></h:form>
-				<br />
-				<h:form><h:commandLink value="Admin panel" action="#{loginBean.logAsAdmin}" /></h:form>
-				<br />
-				
+											
 			</p:layoutUnit>
 						
-			<p:layoutUnit style="font-size: 0.7em;" position="center" scrollable="true">
+			<p:layoutUnit id="contentBox" style="font-size: 0.7em; border-style: none;" position="center" scrollable="true">
 				<!-- *********************************** -->
 				<!-- *********************************** -->				
 				<!-- CENTER -->				

@@ -1,5 +1,7 @@
 package web;
 
+import java.sql.Time;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +27,9 @@ public class LectureBean {
 	private String name;
 	private String description;	
 	private long teacherId;
-	private Date startDate;	
-	private List<Attachment> attachment;
+	private Date startDate = new Date(); //sets the current date - for test purpose	
+	private List<Attachment> attachment =
+			Arrays.asList(new Attachment()); //sets attachments - fore test purpose;
 
 	public long getId() {
 		return id;

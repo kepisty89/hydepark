@@ -7,27 +7,26 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>User - Create</h2>
-
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="login " />
-			<p:inputText value="#{userBean.login}" />
-
-			<h:outputText value="password " />
-			<p:password value="#{userBean.password}" feedback="true"/>
-
-			<h:outputText value="name " />
-			<p:inputText value="#{userBean.name}" />
-
-			<h:outputText value="surname " />
-			<p:inputText value="#{userBean.surname}" />
-		</h:panelGrid>
-
-		<h:panelGrid columns="2">
-			<h:commandButton value="createUser" action="#{userBean.createUser}" />
-		</h:panelGrid>
-	</h:form>
-      
+    <p:panel header="Rejestracja" >	
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Login: " />
+				<p:inputText value="#{userBean.login}" />
+	
+				<h:outputText value="Hasło: " />
+				<p:password value="#{userBean.password}" feedback="true"/>
+	
+				<h:outputText value="Imię: " />
+				<p:inputText value="#{userBean.name}" />
+	
+				<h:outputText value="Nazwisko: " />
+				<p:inputText value="#{userBean.surname}" />
+			</h:panelGrid>
+	
+			<h:panelGrid columns="2">
+				<p:commandButton value="Zarejestruj" action="#{userBean.createUser}" ajax="false" />
+			</h:panelGrid>
+		</h:form>
+    </p:panel>
    </ui:define>
 </ui:composition>
