@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h2>Twoje wykłady:</h2>
+		
+		<h:form rendered="#{loginBean.loggedIn}">
+			<p:dataTable var="lecture"
+				value="#{lectureDetailBean.userParticipates}" paginator="true"
+				rows="10" selection="#{lectureDetailBean.selectedLecture}"
+				selectionMode="single" onRowSelectUpdate="display">
+
+				<f:facet name="header">Wykłady, w których jesteś słuchaczem</f:facet>
+
+				<p:column sortBy="#{lecture.startDate}" sortFunction="#{lectureDetailBean.sort}"
+					filterBy="#{lecture.startDate}">
+					<f:facet name="header">
+						<h:outputText value="Data" />
+					</f:facet>
+					<h:outputText value="#{lecture.startDate}" />
+				</p:column>
+				<p:column sortBy="#{lecture.lecture.name}"
+					filterBy="#{lecture.lecture.name}">
+					<f:facet name="header">
+						<h:outputText value="Tytuł" />
+					</f:facet>
+					<h:outputText value="#{lecture.lecture.name}" />
+				</p:column>
+				<p:column sortBy="#{lecture.lecture.description}"
+					filterBy="#{lecture.lecture.description}">
+					<f:facet name="header">
+						<h:outputText value="Opis" />
+					</f:facet>
+					<h:outputText value="#{lecture.lecture.description}" />
+				</p:column>
+				<p:column sortBy="#{lecture.teacher.name}"
+					filterBy="#{lecture.teacher.name}">
+					<f:facet name="header">
+						<h:outputText value="Imię wykładowcy" />
+					</f:facet>
+					<h:outputText value="#{lecture.teacher.name}" />
+				</p:column>
+				<p:column sortBy="#{lecture.teacher.surname}"
+					filterBy="#{lecture.teacher.surname}">
+					<f:facet name="header">
+						<h:outputText value="Nazwisko wykładowcy" />
+					</f:facet>
+					<h:outputText value="#{lecture.teacher.surname}" />
+				</p:column>
+				<p:column sortBy="" filterBy="">
+					<f:facet name="header">
+						<h:outputText value="Zgłoszeń" />
+					</f:facet>
+					<h:outputText value="0" />
+				</p:column>
+				<p:column sortBy="#{lecture.limit}" filterBy="#{lecture.limit}">
+					<f:facet name="header">
+						<h:outputText value="Limit" />
+					</f:facet>
+					<h:outputText value="#{lecture.limit}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+		<h:outputText value="Zaloguj się by przeglądac"  rendered="#{!loginBean.loggedIn}"/>
+		<br />
+		
+
+		<h:form rendered="#{loginBean.loggedIn}">
+			<p:dataTable var="lecture"
+				value="#{lectureDetailBean.userLectureDetails}" paginator="true"
+				rows="10" selection="#{lectureDetailBean.selectedLecture}"
+				selectionMode="single" onRowSelectUpdate="display">
+
+				<f:facet name="header">Wykłady, które prowadzisz</f:facet>
+
+				<p:column sortBy="#{lecture.startDate}" sortFunction="#{lectureDetailBean.sort}"
+					filterBy="#{lecture.startDate}">
+					<f:facet name="header">
+						<h:outputText value="Data" />
+					</f:facet>
+					<h:outputText value="#{lecture.startDate}" />
+				</p:column>
+				<p:column sortBy="#{lecture.lecture.name}"
+					filterBy="#{lecture.lecture.name}">
+					<f:facet name="header">
+						<h:outputText value="Tytuł" />
+					</f:facet>
+					<h:outputText value="#{lecture.lecture.name}" />
+				</p:column>
+				<p:column sortBy="#{lecture.lecture.description}"
+					filterBy="#{lecture.lecture.description}">
+					<f:facet name="header">
+						<h:outputText value="Opis" />
+					</f:facet>
+					<h:outputText value="#{lecture.lecture.description}" />
+				</p:column>
+				<p:column sortBy="" filterBy="">
+					<f:facet name="header">
+						<h:outputText value="Zgłoszeń" />
+					</f:facet>
+					<h:outputText value="0" />
+				</p:column>
+				<p:column sortBy="#{lecture.limit}" filterBy="#{lecture.limit}">
+					<f:facet name="header">
+						<h:outputText value="Limit" />
+					</f:facet>
+					<h:outputText value="#{lecture.limit}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+		<br />
+
+		<h2>Dostępne wykłady:</h2>
+
+		<h:form>
+			<p:dataTable var="lecture"
+				value="#{lectureDetailBean.allLectureDetails}" paginator="true"
+				rows="10" selection="#{lectureDetailBean.selectedLecture}"
+				selectionMode="single" onRowSelectUpdate="display">
+
+				<f:facet name="header">Wszystkie wykłady na portalu</f:facet>
+
+				<p:column sortBy="#{lecture.startDate}" sortFunction="#{lectureDetailBean.sort}"
+					filterBy="#{lecture.startDate}">
+					<f:facet name="header">
+						<h:outputText value="Data" />
+					</f:facet>
+					<h:outputText value="#{lecture.startDate}" />
+				</p:column>
+				<p:column sortBy="#{lecture.lecture.name}"
+					filterBy="#{lecture.lecture.name}">
+					<f:facet name="header">
+						<h:outputText value="Tytuł" />
+					</f:facet>
+					<h:outputText value="#{lecture.lecture.name}" />
+				</p:column>
+				<p:column sortBy="#{lecture.lecture.description}"
+					filterBy="#{lecture.lecture.description}">
+					<f:facet name="header">
+						<h:outputText value="Opis" />
+					</f:facet>
+					<h:outputText value="#{lecture.lecture.description}" />
+				</p:column>
+				<p:column sortBy="#{lecture.teacher.name}"
+					filterBy="#{lecture.teacher.name}">
+					<f:facet name="header">
+						<h:outputText value="Imię wykładowcy" />
+					</f:facet>
+					<h:outputText value="#{lecture.teacher.name}" />
+				</p:column>
+				<p:column sortBy="#{lecture.teacher.surname}"
+					filterBy="#{lecture.teacher.surname}">
+					<f:facet name="header">
+						<h:outputText value="Nazwisko wykładowcy" />
+					</f:facet>
+					<h:outputText value="#{lecture.teacher.surname}" />
+				</p:column>
+				<p:column sortBy="" filterBy="">
+					<f:facet name="header">
+						<h:outputText value="Zgłoszeń" />
+					</f:facet>
+					<h:outputText value="0" />
+				</p:column>
+				<p:column sortBy="#{lecture.limit}" filterBy="#{lecture.limit}">
+					<f:facet name="header">
+						<h:outputText value="Limit" />
+					</f:facet>
+					<h:outputText value="#{lecture.limit}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
