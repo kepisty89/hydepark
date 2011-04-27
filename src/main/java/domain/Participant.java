@@ -13,7 +13,8 @@ import domain.LectureDetail;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "participant.all", query="SELECT p FROM Participant p GROUP BY p.user"),
-		@NamedQuery(name = "participant.byLectureDetail", query="SELECT p FROM Participant p WHERE p.lectureDetail = :LectureDetail")})
+		@NamedQuery(name = "participant.byLectureDetail", query="SELECT p FROM Participant p WHERE p.lectureDetail = :LectureDetail"),
+		@NamedQuery(name = "participant.byUser", query="SELECT p.lectureDetail FROM Participant p WHERE p.user.id = :uid")})
 public class Participant {
 	private long id;
 	private User user;

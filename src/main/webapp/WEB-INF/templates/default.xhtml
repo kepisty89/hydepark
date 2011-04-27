@@ -6,71 +6,94 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-	<h:head>
-		<title>HydePark - v0.2 - Projekt zespołowy</title>
-	</h:head>
-		
-	<h:body>	
-		<p:layout fullPage="true">			
-			<p:layoutUnit style="background-image:url('/hydepark/resources/gfx/header_background.png');" 
-						  position="top" height="74" resizable="false" closable="false" collapsible="false">
-				<!-- *********************************** -->
-				<!-- *********************************** -->				
-				<!-- HEADER -->				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
+<h:head>
+	<title>HydePark - v0.2 - Projekt zespołowy</title>
+</h:head>
+
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit
+			style="background-image:url('/hydepark/resources/gfx/header_background.png');"
+			position="top" height="74" resizable="false" closable="false"
+			collapsible="false">
+			<!-- *********************************** -->
+			<!-- *********************************** -->
+			<!-- HEADER -->
+			<!-- *********************************** -->
+			<!-- *********************************** -->
+			<h:form>
+				<h:commandLink action="/home">
+					<img src="/hydepark/resources/gfx/sign2.png" alt="header" />
+				</h:commandLink>
+			</h:form>
+
+		</p:layoutUnit>
+
+		<p:layoutUnit style="font-size: 0.7em;" position="left" width="200"
+			header="Menu" resizable="false" closable="false" collapsible="false"
+			scrollable="true">
+			<!-- *********************************** -->
+			<!-- *********************************** -->
+			<!-- LEFT -->
+			<!-- *********************************** -->
+			<!-- *********************************** -->
+
+			<p>
+				<h:outputText value="Witaj #{loginBean.login}"
+					rendered="#{loginBean.loggedIn}" />
+			</p>
+
+			<h:form>
+				<h:commandLink value="Zaloguj" action="/panel/login"
+					rendered="#{!loginBean.loggedIn}" />
+				<h:commandLink value="Wyloguj" action="#{loginBean.logout}"
+					rendered="#{loginBean.loggedIn}" />
+				<br />
+				<br />
+				<h:commandLink value="Zarejestruj" action="/user/createForAll"
+					rendered="#{!loginBean.loggedIn}" />
+				<br />
+			</h:form>
+
+			<hr />
+			<p>
 				<h:form>
-					<h:commandLink action="/home">
-						<img src="/hydepark/resources/gfx/sign2.png" alt="header" />
-					</h:commandLink>
+					<h:commandLink value="Wykłady" action="/lectures" />
 				</h:form>
-				
-			</p:layoutUnit>
-			
-			<p:layoutUnit style="font-size: 0.7em;" position="left" width="200" header="Menu" resizable="false" closable="false" collapsible="false" scrollable="true">
-				<!-- *********************************** -->
-				<!-- *********************************** -->				
-				<!-- LEFT -->				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<p>
-					<h:outputText value="Witaj #{loginBean.login}"  rendered="#{loginBean.loggedIn}"/>
-				</p>
-				
-				<h:form>
-					<h:commandLink value="Zaloguj" action="/panel/login" rendered="#{!loginBean.loggedIn}"/>
-					<h:commandLink value="Wyloguj" action="#{loginBean.logout}" rendered="#{loginBean.loggedIn}"/>
-					<br /><br />
-					<h:commandLink value="Zarejestruj" action="/user/createForAll" rendered="#{!loginBean.loggedIn}"/>
-					<br />
-				</h:form>
-				
-				<hr></hr>
-				<br />
-				<h:form><h:commandLink value="User panel" action="#{loginBean.logAsUser}" /></h:form>
-				<br />
-				<h:form><h:commandLink value="Teacher panel" action="#{loginBean.logAsTeacher}" /></h:form>
-				<br />
-				<h:form><h:commandLink value="Admin panel" action="#{loginBean.logAsAdmin}" /></h:form>
-				<br />
-				
-			</p:layoutUnit>
-						
-			<p:layoutUnit style="font-size: 0.7em;" position="center" scrollable="true">
-				<!-- *********************************** -->
-				<!-- *********************************** -->				
-				<!-- CENTER -->				
-				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<ui:insert name="content">
-					
-				</ui:insert>				
-				
-			</p:layoutUnit>
-			
-		</p:layout>
-				
-	</h:body>
+			</p>
+			<hr />
+			<br />
+			<h:form>
+				<h:commandLink value="User panel" action="#{loginBean.logAsUser}" />
+			</h:form>
+			<br />
+			<h:form>
+				<h:commandLink value="Teacher panel"
+					action="#{loginBean.logAsTeacher}" />
+			</h:form>
+			<br />
+			<h:form>
+				<h:commandLink value="Admin panel" action="#{loginBean.logAsAdmin}" />
+			</h:form>
+			<br />
+
+		</p:layoutUnit>
+
+		<p:layoutUnit style="font-size: 0.7em;" position="center"
+			scrollable="true">
+			<!-- *********************************** -->
+			<!-- *********************************** -->
+			<!-- CENTER -->
+			<!-- *********************************** -->
+			<!-- *********************************** -->
+
+			<ui:insert name="content">
+
+			</ui:insert>
+
+		</p:layoutUnit>
+
+	</p:layout>
+
+</h:body>
 </html>
