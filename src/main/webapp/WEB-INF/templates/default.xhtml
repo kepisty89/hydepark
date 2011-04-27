@@ -49,7 +49,10 @@
 				            <p:menuitem><h:commandLink value="User panel" action="#{loginBean.logAsUser}" /></p:menuitem>
 				            <p:menuitem><h:commandLink value="Teacher panel" action="#{loginBean.logAsTeacher}" /></p:menuitem>						
 							<p:menuitem><h:commandLink value="Admin panel" action="#{loginBean.logAsAdmin}" /></p:menuitem>  
-				        </p:submenu>  			         
+				        </p:submenu>  
+						<p:submenu label="Wykłady">
+							<p:menuitem><h:commandLink value="Wykłady" action="/lectures" /></p:menuitem>  
+						</p:submenu>  
 	    			</p:menu>      						
 				</h:form>
 											
