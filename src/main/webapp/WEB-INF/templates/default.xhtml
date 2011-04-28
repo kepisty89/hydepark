@@ -12,8 +12,7 @@
 		
 	<h:body>	
 		<p:layout fullPage="true">			
-			<p:layoutUnit style="background-image:url('/hydepark/resources/gfx/header_background.png');" 
-						  position="top" height="74" resizable="false" closable="false" collapsible="false">
+			<p:layoutUnit style="background-image:url('/hydepark/resources/gfx/header_background.png'); border: none;" position="top" height="74" resizable="false" closable="false" collapsible="false">
 				<!-- *********************************** -->
 				<!-- *********************************** -->				
 				<!-- HEADER -->				
@@ -21,37 +20,38 @@
 				<!-- *********************************** -->
 				<h:form>
 					<h:commandLink action="/home">
-						<img src="/hydepark/resources/gfx/sign2.png" alt="header" />
+						<img src="/hydepark/resources/gfx/sign.png" alt="header" />
 					</h:commandLink>
 				</h:form>
 				
 			</p:layoutUnit>
 			
-			<p:layoutUnit style="font-size: 0.7em;" position="left" width="168" header="Menu" resizable="false" closable="false" collapsible="false" scrollable="true">
+			<p:layoutUnit style="font-size: 0.7em;" position="left" width="168" resizable="false" closable="false" collapsible="false" scrollable="true">
 				<!-- *********************************** -->
 				<!-- *********************************** -->				
 				<!-- LEFT -->				
 				<!-- *********************************** -->
-				<!-- *********************************** -->
-				
-				<p>					
-					<h:outputText value="  Witaj #{loginBean.login}!"  rendered="#{loginBean.loggedIn}"/>
-				</p>														
+				<!-- *********************************** -->						
+						
+					<div id="loggedSign">							
+						<p><b><h:outputText value="Nie jesteś zalogowany." rendered="#{!loginBean.loggedIn}"/></b></p>							
+						<p><b><h:outputText value="Witaj #{loginBean.login}!"  rendered="#{loginBean.loggedIn}"/></b></p>						
+					</div>																
 				
 				<h:form>				
 					<p:menu id="log">  
 				        <p:submenu label="Logowanie">  
-				           	<p:menuitem><h:commandLink value="Zaloguj" action="/panel/login" rendered="#{!loginBean.loggedIn}"/></p:menuitem>
+				           	<p:menuitem icon="/hydepark/resources/gfx/icons/login.png"><h:commandLink value="Zaloguj" action="/panel/login" rendered="#{!loginBean.loggedIn}"/></p:menuitem>
 							<p:menuitem><h:commandLink value="Wyloguj" action="#{loginBean.logout}" rendered="#{loginBean.loggedIn}"/></p:menuitem>
 							<p:menuitem><h:commandLink value="Zarejestruj" action="/user/createForAll" rendered="#{!loginBean.loggedIn}"/></p:menuitem>
 				        </p:submenu>  
 				        <p:submenu label="Panel">  
-				            <p:menuitem><h:commandLink value="User panel" action="#{loginBean.logAsUser}" /></p:menuitem>
-				            <p:menuitem><h:commandLink value="Teacher panel" action="#{loginBean.logAsTeacher}" /></p:menuitem>						
-							<p:menuitem><h:commandLink value="Admin panel" action="#{loginBean.logAsAdmin}" /></p:menuitem>  
+				            <p:menuitem><h:commandLink value="Panel Użytkownika" action="#{loginBean.logAsUser}" /></p:menuitem>
+				            <p:menuitem><h:commandLink value="Panel Wykładowcy" action="#{loginBean.logAsTeacher}" /></p:menuitem>						
+							<p:menuitem><h:commandLink value="Panel Administratora" action="#{loginBean.logAsAdmin}" /></p:menuitem>							   
 				        </p:submenu>  
 						<p:submenu label="Wykłady">
-							<p:menuitem><h:commandLink value="Wykłady" action="/lectures" /></p:menuitem>  
+							 <p:menuitem><h:commandLink value="Wykłady" action="/lectures" /></p:menuitem>  
 						</p:submenu>  
 	    			</p:menu>      						
 				</h:form>

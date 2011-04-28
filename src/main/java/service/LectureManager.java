@@ -10,7 +10,6 @@ import domain.Credential;
 import domain.FileType;
 import domain.Lecture;
 import domain.LectureDetail;
-import domain.Participant;
 import domain.Role;
 import domain.User;
 
@@ -205,10 +204,12 @@ public class LectureManager implements LectureInterface {
 		return em.find(User.class, id);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<LectureDetail> userLectureDetails(long uid) {
 		return em.createNamedQuery("lectureDetail.byUser").setParameter("uid", uid).getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<LectureDetail> getUserLectures(long uid) {
 		return em.createNamedQuery("participant.byUser").setParameter("uid", uid).getResultList();
 	}

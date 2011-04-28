@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -53,10 +54,13 @@ public class Lecture {
 	public void setAttachment(List<Attachment> attachment) {
 		this.attachment = attachment;
 	}
+	
 	public Lecture(String name, String description) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.lectureDetail = Arrays.asList(new LectureDetail());;
+		this.attachment = Arrays.asList(new Attachment());
 	}
 	
 	public Lecture() {

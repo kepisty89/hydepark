@@ -7,38 +7,38 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>Admin panel</h2>
-
-	<hr></hr>
-
-	User:
-	<ul>
-		<li><a href="/hydepark/user/createForAll.jsf">Create</a></li>
-		<li><a href="/hydepark/user/readForAll.jsf">Read</a></li>
-		<li><a href="/hydepark/user/updateForAdmin.jsf">Update</a></li>
-		<li><a href="/hydepark/user/deleteForAdmin.jsf">Delete</a></li>
-		<li><a href="/hydepark/user/banForAdmin.jsf">Ban</a></li>
-		<li><a href="/hydepark/user/unbanForAdmin.jsf">Unban</a></li>
-		<li><a href="/hydepark/user/roleForAdmin.jsf">Role</a></li>
-    </ul>
-    
-    <hr></hr>
-    
-    Lecture:
-    <ul>
-		<li><a href="/hydepark/lecture/update.jsf">Update</a></li>
-		<li><a href="/hydepark/lecture/delete.jsf">Delete</a></li>
-	</ul>  
-    
-    <hr></hr>
-    
-    Lecture Detail:
-    <ul>
-		<li><a href="/hydepark/lectureDetail/update.jsf">Update</a></li>
-		<li><a href="/hydepark/lectureDetail/delete.jsf">Delete</a></li>
-	</ul>
+    <p:panel header="Panel administratora">		
+		
+		Użytkownicy:
+		<ul>
+			<li><a href="/hydepark/user/createForAll.jsf">Dodaj</a></li>
+			<li><a href="/hydepark/user/readForAll.jsf">Przejrzyj wykłady</a></li>
+			<li><a href="/hydepark/user/updateForAdmin.jsf">Edytuj</a></li>
+			<li><a href="/hydepark/user/deleteForAdmin.jsf">Usuń</a></li>
+			<li><a href="/hydepark/user/banForAdmin.jsf">Zbanuj</a></li>
+			<li><a href="/hydepark/user/unbanForAdmin.jsf">Odbanuj</a></li>
+			<li><a href="/hydepark/user/roleForAdmin.jsf">Role</a></li>
+	    </ul>
+	    
+	    <hr></hr>
+	    
+	    Wykłady (ogólnie):
+	    <ul>
+			<li><a href="/hydepark/lecture/update.jsf">Edytuj</a></li>
+			<li><a href="/hydepark/lecture/delete.jsf">Usuń</a></li>
+		</ul>  
+	    
+	    <hr></hr>
+	    
+	    Wykłady (szczegóły):
+	    <ul>
+			<li><a href="/hydepark/lectureDetail/update.jsf">Edytuj</a></li>
+			<li><a href="/hydepark/lectureDetail/delete.jsf">Usuń</a></li>
+		</ul>
+		
+		<hr></hr>
 	
-	<hr></hr>
+	</p:panel>
       
    </ui:define>
 </ui:composition>

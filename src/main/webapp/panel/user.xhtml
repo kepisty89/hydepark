@@ -6,19 +6,19 @@
 	xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-    
-    <h2>User panel</h2>
-
-	<hr></hr>
-
-	User:
-	<ul>
-		<li><a href="/hydepark/user/readForAll.jsf">Read</a></li>
-		<li><a href="/hydepark/user/updateForUser.jsf">Update</a></li>
-		<li><a href="/hydepark/user/deleteForUser.jsf">Delete</a></li>
-    </ul>
-    
-    <hr></hr>
+            
+    <p:panel header="Panel użytkownika">	
+		
+		Twoje konto:
+		<ul>
+			<li><a href="/hydepark/user/readForAll.jsf">Zobacz</a></li>
+			<li><a href="/hydepark/user/updateForUser.jsf">Edytuj</a></li>
+			<li><a href="/hydepark/user/deleteForUser.jsf">Usuń</a></li>
+	    </ul>
+	    
+	    <hr></hr>
+	        
+    </p:panel>
         
    </ui:define>
 </ui:composition>

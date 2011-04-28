@@ -9,13 +9,18 @@
 
 	<h:form>		
 		<p:panel header="Dodaj wykład">
+			<br />
+			<h:outputText style="font-weight: bold;" value="Dodając wykład masz dwie opcje - kopiowanie już istniejących danych z wykładu "/>
+			<h:outputText style="font-weight: bold;" value=" (nazwa, opis, itp.) lub stworzenie wykładu od podstaw." />
+			<br />
+			<br />
 			<h:panelGrid columns="2">
+			
+				<h:outputText style="font-weight: bold;" value="Skopiowac poprzedni wykład?" />
+				<h:selectBooleanCheckbox />  				
 								
 				<h:outputText value="Nazwa wykładu:" />
-				<p:inputText value="#{lectureBean.name}" />
-				
-				<h:outputText value="Opis wykładu:" />
-				<p:inputTextarea value="#{lectureBean.description}" />
+				<p:inputText value="#{lectureBean.name}" />								
 				
 				<h:outputText value="Data:" />
 				<p:calendar value="#{lectureBean.startDate}" />									
@@ -25,6 +30,15 @@
 	    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
 	    		</h:selectOneMenu>
 				
+				<h:outputText value="Limit osób:" />
+				<p:layoutUnit position="top">	    			    		 			     
+		        <p:inputText id="txt1" value="20" />  
+		        <p:slider for="txt1"/>  	
+		        </p:layoutUnit>
+		        
+		        <h:outputText value="Opis wykładu:" />
+				<p:inputTextarea style="width:300px;height:100px;" effectDuration="400" value="#{lectureBean.description}" />		    
+					
 				<p:commandButton value="Dodaj" action="#{lectureBean.createLecture}" ajax="false" />
 			</h:panelGrid>	
 		</p:panel>

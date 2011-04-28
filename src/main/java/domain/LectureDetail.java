@@ -19,8 +19,8 @@ public class LectureDetail {
 	private Date startDate;
 	private User teacher;
 	private int rate;
-	private Lecture lecture;
 	private int limit;
+	private Lecture lecture;	
 	
 	@Id
 	@GeneratedValue
