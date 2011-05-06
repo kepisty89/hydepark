@@ -7,18 +7,18 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>Lecture Detail - Delete</h2>
+    <h2>Usuń wykład (szczegóły)</h2>
 
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="lecture detail id " />
+			<h:outputText value="Wybierz wykład: " />
 			<h:selectOneMenu value="#{lectureBean.id}">
-    			<f:selectItems value="#{lectureBean.allLectureDetail}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+    			<f:selectItems value="#{lectureBean.allLectureDetail}" var="current" itemLabel="Data: #{current.startDate} -> Nazwa: #{current.lecture.name} -> Nauczyciel: #{current.teacher.credential.login}" itemValue="#{current.id}" />
     		</h:selectOneMenu>
 		</h:panelGrid>
 
 		<h:panelGrid columns="2">
-			<h:commandButton value="deleteLectureDetail" action="#{lectureBean.deleteLectureDetail}" />
+			<h:commandButton value="Usuń wykład (szczegóły)" action="#{lectureBean.deleteLectureDetail}" />
 		</h:panelGrid>
 	</h:form>
       

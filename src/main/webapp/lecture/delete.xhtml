@@ -7,20 +7,20 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">    
 
-<p:panel header="Usuń wykład">
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="Wybierz wykład: " />
-			<h:selectOneMenu value="#{lectureBean.id}">
-    			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="ID: #{current.id} -> NAZWA: #{current.name}" itemValue="#{current.id}" />
-    		</h:selectOneMenu>
-		</h:panelGrid>
-
-		<h:panelGrid columns="2">
-			<p:commandButton value="Usuń wykład" action="#{lectureBean.deleteLecture}" ajax="false" />
-		</h:panelGrid>
-	</h:form>
-</p:panel>
+	<p:panel header="Usuń wykład (ogólnie)">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Wybierz wykład: " />
+				<h:selectOneMenu value="#{lectureBean.id}">
+	    			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="ID: #{current.id} -> NAZWA: #{current.name}" itemValue="#{current.id}" />
+	    		</h:selectOneMenu>
+			</h:panelGrid>
+	
+			<h:panelGrid columns="2">
+				<p:commandButton value="Usuń wykład" action="#{lectureBean.deleteLecture}" ajax="false" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
       
    </ui:define>
 </ui:composition>

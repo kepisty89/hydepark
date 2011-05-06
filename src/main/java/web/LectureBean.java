@@ -14,6 +14,7 @@ import domain.Credential;
 import domain.FileType;
 import domain.Lecture;
 import domain.LectureDetail;
+import domain.User;
 
 @RequestScoped
 @Named
@@ -26,10 +27,19 @@ public class LectureBean {
 	private String name;
 	private String description;	
 	private long teacherId;
+	private User teacher;
 	private Date startDate = new Date(); //sets the current date - for test purpose	
 	private List<Attachment> attachment =
 			Arrays.asList(new Attachment()); //sets attachments - fore test purpose;
 
+	public User getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(User teacher) {
+		this.teacher = teacher;
+	}
+	
 	public long getId() {
 		return id;
 	}

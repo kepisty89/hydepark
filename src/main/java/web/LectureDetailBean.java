@@ -130,4 +130,13 @@ public class LectureDetailBean {
 		this.userLectureDetails = userLectureDetails;
 	}
 	
+	public String deleteLectureDetail() {
+		if(Ilecture.deleteLectureDetail(id)) {
+			return "/panel/success";
+		}
+		else {
+			return "/panel/error";
+		}
+	}
+	
 }

@@ -7,24 +7,27 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>Lecture Detail - Update</h2>
+    <h2>Edytuj wykład (szczegóły)</h2>
 
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="lecture detail id " />
+			<h:outputText value="Wybierz wykład: " />
 			<h:selectOneMenu value="#{lectureBean.id}">
-    			<f:selectItems value="#{lectureBean.allLectureDetail}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+    			<f:selectItems value="#{lectureBean.allLectureDetail}" var="current" itemLabel="Data: #{current.startDate} -> Nazwa: #{current.lecture.name} -> Nauczyciel: #{current.teacher.credential.login}" itemValue="#{current.id}" />
     		</h:selectOneMenu>
     		
-			<h:outputText value="new teacher id " />
-			<h:selectOneMenu value="#{lectureBean.teacherId}">
-    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+			<h:outputText value="Nauczyciel: " />
+			<h:selectOneMenu value="#{lectureBean.teacherId}" >
+    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.login}" itemValue="#{current.id}" />
     		</h:selectOneMenu>
+    		
+    		<h:outputText value="Data: " />
+			<p:calendar value="#{lectureBean.startDate}" />
 
 		</h:panelGrid>
 
 		<h:panelGrid columns="2">
-			<h:commandButton value="updateLectureDetail" action="#{lectureBean.updateLectureDetail}" />
+			<h:commandButton value="Edytuj wykład (szczegóły)" action="#{lectureBean.updateLectureDetail}" />
 		</h:panelGrid>
 	</h:form>
       
