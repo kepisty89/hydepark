@@ -7,20 +7,22 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>Usuń wykład (szczegóły)</h2>
+    <p:panel header="Usuń wykład (szczegóły)">
 
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="Wybierz wykład: " />
-			<h:selectOneMenu value="#{lectureBean.id}">
-    			<f:selectItems value="#{lectureBean.allLectureDetail}" var="current" itemLabel="Data: #{current.startDate} -> Nazwa: #{current.lecture.name} -> Nauczyciel: #{current.teacher.credential.login}" itemValue="#{current.id}" />
-    		</h:selectOneMenu>
-		</h:panelGrid>
-
-		<h:panelGrid columns="2">
-			<h:commandButton value="Usuń wykład (szczegóły)" action="#{lectureBean.deleteLectureDetail}" />
-		</h:panelGrid>
-	</h:form>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Wybierz wykład: " />
+				<h:selectOneMenu value="#{lectureBean.id}">
+	    			<f:selectItems value="#{lectureBean.allLectureDetail}" var="current" itemLabel="Data: #{current.startDate} -> Nazwa: #{current.lecture.name} -> Nauczyciel: #{current.teacher.credential.login}" itemValue="#{current.id}" />
+	    		</h:selectOneMenu>
+			</h:panelGrid>
+	
+			<h:panelGrid columns="2">
+				<h:commandButton value="Usuń wykład (szczegóły)" action="#{lectureBean.deleteLectureDetail}" />
+			</h:panelGrid>
+		</h:form>
+	
+	</p:panel>
       
    </ui:define>
 </ui:composition>

@@ -6,21 +6,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-    
-    <h2>User - Delete</h2>
 
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="login " />
-			<h:selectOneMenu value="#{userBean.login}">
-    			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
-    		</h:selectOneMenu>
-		</h:panelGrid>
+    <p:panel header="Usuń konto">
+	
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Login: " />
+				<h:selectOneMenu value="#{userBean.login}">
+	    			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
+	    		</h:selectOneMenu>
+			</h:panelGrid>
+	
+			<h:panelGrid columns="2">
+				<p:commandButton value="Usuń konto" action="#{userBean.deleteUserForAdmin}" ajax="false" />
+			</h:panelGrid>
+		</h:form>
+	
+	</p:panel>
 
-		<h:panelGrid columns="2">
-			<h:commandButton value="deleteUser" action="#{userBean.deleteUserForAdmin}" />
-		</h:panelGrid>
-	</h:form>
+	
       
    </ui:define>
 </ui:composition>

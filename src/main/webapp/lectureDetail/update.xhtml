@@ -7,29 +7,31 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>Edytuj wykład (szczegóły)</h2>
+    <p:panel header="Edytuj wykład (szczegóły)">
 
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="Wybierz wykład: " />
-			<h:selectOneMenu value="#{lectureBean.id}">
-    			<f:selectItems value="#{lectureBean.allLectureDetail}" var="current" itemLabel="Data: #{current.startDate} -> Nazwa: #{current.lecture.name} -> Nauczyciel: #{current.teacher.credential.login}" itemValue="#{current.id}" />
-    		</h:selectOneMenu>
-    		
-			<h:outputText value="Nauczyciel: " />
-			<h:selectOneMenu value="#{lectureBean.teacherId}" >
-    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.login}" itemValue="#{current.id}" />
-    		</h:selectOneMenu>
-    		
-    		<h:outputText value="Data: " />
-			<p:calendar value="#{lectureBean.startDate}" />
-
-		</h:panelGrid>
-
-		<h:panelGrid columns="2">
-			<h:commandButton value="Edytuj wykład (szczegóły)" action="#{lectureBean.updateLectureDetail}" />
-		</h:panelGrid>
-	</h:form>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Wybierz wykład: " />
+				<h:selectOneMenu value="#{lectureBean.id}">
+	    			<f:selectItems value="#{lectureBean.allLectureDetail}" var="current" itemLabel="Data: #{current.startDate} -> Nazwa: #{current.lecture.name} -> Nauczyciel: #{current.teacher.credential.login}" itemValue="#{current.id}" />
+	    		</h:selectOneMenu>
+	    		
+				<h:outputText value="Nauczyciel: " />
+				<h:selectOneMenu value="#{lectureBean.teacherId}" >
+	    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.login}" itemValue="#{current.id}" />
+	    		</h:selectOneMenu>
+	    		
+	    		<h:outputText value="Data: " />
+				<p:calendar value="#{lectureBean.startDate}" />
+	
+			</h:panelGrid>
+	
+			<h:panelGrid columns="2">
+				<h:commandButton value="Edytuj wykład (szczegóły)" action="#{lectureBean.updateLectureDetail}" />
+			</h:panelGrid>
+		</h:form>
+	
+	</p:panel>
       
    </ui:define>
 </ui:composition>

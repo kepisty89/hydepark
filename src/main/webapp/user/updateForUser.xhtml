@@ -6,31 +6,35 @@
 	xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-    
-    <h2>Edytuj konto</h2>
 
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="Twój login: " />
-			<h:inputText value="#{userBean.login}" />
+    <p:panel header="Edytuj konto">
+	
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Twój login: " />
+				<h:inputText value="#{userBean.login}" />
+	
+				<h:outputText value="Hasło: " />
+				<h:inputSecret value="#{userBean.password}" />
+				
+				<h:outputText value="Nowe hasło (jeśli je zmieniasz) " />
+				<h:inputSecret value="#{userBean.newPassword}" />
+	
+				<h:outputText value="Nowe imię (jeśli je zmieniasz) " />
+				<h:inputText value="#{userBean.name}" />
+	
+				<h:outputText value="Nowe nazwisko (jeśli je zmieniasz) " />
+				<h:inputText value="#{userBean.surname}" />
+			</h:panelGrid>
+	
+			<h:panelGrid columns="2">
+				<p:commandButton value="Edytuj konto" action="#{userBean.updateUserForUser}" ajax="false" />
+			</h:panelGrid>
+		</h:form>
+	
+	</p:panel>
 
-			<h:outputText value="Hasło: " />
-			<h:inputSecret value="#{userBean.password}" />
-			
-			<h:outputText value="Nowe hasło (jeśli je zmieniasz) " />
-			<h:inputSecret value="#{userBean.newPassword}" />
-
-			<h:outputText value="Nowe imię (jeśli je zmieniasz) " />
-			<h:inputText value="#{userBean.name}" />
-
-			<h:outputText value="Nowe nazwisko (jeśli je zmieniasz) " />
-			<h:inputText value="#{userBean.surname}" />
-		</h:panelGrid>
-
-		<h:panelGrid columns="2">
-			<p:commandButton value="Edytuj konto" action="#{userBean.updateUserForUser}" ajax="false" />
-		</h:panelGrid>
-	</h:form>
+	
       
    </ui:define>
 </ui:composition>

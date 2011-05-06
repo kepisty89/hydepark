@@ -6,10 +6,10 @@
 	xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-    
-    <h2>Użytkownicy</h2>
 
-	<h:form>
+	<p:panel header="Użytkownicy">
+	
+		<h:form>
 			<p:dataTable var="credential"
 				value="#{userBean.allCredentials}" paginator="true"
 				rows="10" selection="#{userBean.selectedCredential}"
@@ -42,6 +42,10 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
+		
+	</p:panel>
+
+	
  		      
    </ui:define>
 </ui:composition>

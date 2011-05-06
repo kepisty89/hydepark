@@ -146,10 +146,10 @@ public class UserBean {
 	}
 	
 	public String roleUser() {
-		if(login.isEmpty() || password.isEmpty()) {
+		if(login.isEmpty()) {
 			return "/panel/error";
 		}
-		if(userManager.setRole(login, password, role)) {
+		if(userManager.setRole(login, role)) {
 			return "/panel/success";
 		}
 		else {

@@ -7,21 +7,25 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>Usuń konto</h2>
+    <p:panel header="Usuń konto">
+	
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Twój login: " />
+				<h:inputText value="#{userBean.login}" />
+	
+				<h:outputText value="Hasło: " />
+				<h:inputSecret value="#{userBean.password}" />
+			</h:panelGrid>
+	
+			<h:panelGrid columns="2">
+				<p:commandButton value="Usuń konto" action="#{userBean.deleteUserForUser}" ajax="false" />
+			</h:panelGrid>
+		</h:form>
+	
+	</p:panel>
 
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="Twój login: " />
-			<h:inputText value="#{userBean.login}" />
-
-			<h:outputText value="Hasło: " />
-			<h:inputSecret value="#{userBean.password}" />
-		</h:panelGrid>
-
-		<h:panelGrid columns="2">
-			<p:commandButton value="Usuń konto" action="#{userBean.deleteUserForUser}" ajax="false" />
-		</h:panelGrid>
-	</h:form>
+	
       
    </ui:define>
 </ui:composition>
