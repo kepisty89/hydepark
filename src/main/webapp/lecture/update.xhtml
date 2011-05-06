@@ -7,25 +7,25 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>Lecture - Update</h2>
+    <h2>Edytuj wykład</h2>
 
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="lecture id " />
+			<h:outputText value="Wybierz wykład: " />
 			<h:selectOneMenu value="#{lectureBean.id}">
-    			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+    			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="ID: #{current.id} -> NAZWA: #{current.name}" itemValue="#{current.id}" />
     		</h:selectOneMenu>
 
-			<h:outputText value="new name " />
+			<h:outputText value="Nowa nazwa (jeśli ją zmieniasz) " />
 			<h:inputText value="#{lectureBean.name}" />
 			
-			<h:outputText value="new description " />
-			<h:inputText value="#{lectureBean.description}" />
+			<h:outputText value="Nowy opis (jeśli go zmieniasz) " />
+			<p:inputTextarea style="width:300px;height:100px;" effectDuration="400" value="#{lectureBean.description}" />
 
 		</h:panelGrid>
 
 		<h:panelGrid columns="2">
-			<h:commandButton value="updateLecture" action="#{lectureBean.updateLecture}" />
+			<p:commandButton value="Edytuj wykład" action="#{lectureBean.updateLecture}" ajax="false" />
 		</h:panelGrid>
 	</h:form>
       

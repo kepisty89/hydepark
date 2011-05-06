@@ -10,9 +10,9 @@
 <p:panel header="Usuń wykład">
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="Id wykładu: " />
+			<h:outputText value="Wybierz wykład: " />
 			<h:selectOneMenu value="#{lectureBean.id}">
-    			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+    			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="ID: #{current.id} -> NAZWA: #{current.name}" itemValue="#{current.id}" />
     		</h:selectOneMenu>
 		</h:panelGrid>
 
