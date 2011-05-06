@@ -50,6 +50,11 @@ public class UserManager implements UserInterface {
 		}
 		
 		long userId = findUserCredentialId(login);
+		
+		if(userId == -1) {
+			return false;
+		}
+		
 		Credential credential = em.find(Credential.class, userId);
 		User user = em.find(User.class, userId);
 		if (credential.getPassword().contentEquals(password))
@@ -88,6 +93,11 @@ public class UserManager implements UserInterface {
 		}
 		
 		long userId = findUserCredentialId(login);
+		
+		if(userId == -1) {
+			return false;
+		}
+		
 		User user = em.find(User.class, userId);	
 		Credential credential = em.find(Credential.class, userId);
 		

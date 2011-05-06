@@ -23,6 +23,14 @@ public class UserBean {
 	private String newPassword;
 	private String role;
 	
+	private Credential selectedCredential;
+	
+	public Credential getSelectedCredential() {
+		return selectedCredential;
+	}
+	public void setSelectedCredential(Credential selectedCredential) {
+		this.selectedCredential = selectedCredential;
+	}
 	public String getRole() {
 		return role;
 	}
@@ -165,5 +173,6 @@ public class UserBean {
 	public List<Credential> getAllTeachers() {
 		return userManager.readTeacherCredential();
 	}
+	
 	
 }

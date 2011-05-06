@@ -7,30 +7,28 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>User - Update</h2>
+    <h2>Edytuj konto</h2>
 
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="login " />
-			<h:selectOneMenu value="#{userBean.login}">
-    			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
-    		</h:selectOneMenu>
+			<h:outputText value="Twój login: " />
+			<h:inputText value="#{userBean.login}" />
 
-			<h:outputText value="password " />
+			<h:outputText value="Hasło: " />
 			<h:inputSecret value="#{userBean.password}" />
 			
-			<h:outputText value="new password " />
+			<h:outputText value="Nowe hasło (jeśli je zmieniasz) " />
 			<h:inputSecret value="#{userBean.newPassword}" />
 
-			<h:outputText value="name " />
+			<h:outputText value="Nowe imię (jeśli je zmieniasz) " />
 			<h:inputText value="#{userBean.name}" />
 
-			<h:outputText value="surname " />
+			<h:outputText value="Nowe nazwisko (jeśli je zmieniasz) " />
 			<h:inputText value="#{userBean.surname}" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="2">
-			<h:commandButton value="updateUser" action="#{userBean.updateUserForUser}" />
+			<h:commandButton value="Edytuj konto" action="#{userBean.updateUserForUser}" />
 		</h:panelGrid>
 	</h:form>
       
