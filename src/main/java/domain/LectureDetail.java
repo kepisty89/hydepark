@@ -67,13 +67,13 @@ public class LectureDetail {
 	public LectureDetail() {
 		super();
 	}
-	public LectureDetail(Date startDate, User teacher, Lecture lecture) {
+	public LectureDetail(Date startDate, User teacher, Lecture lecture, int limit) {
 		super();
 		this.startDate = startDate;
 		this.teacher = teacher;
-		this.lecture = lecture;
-		this.rate = 1;
-		this.limit = 50;
+		this.lecture = lecture;		
+		this.limit = limit;
+		this.rate = 0;
 	}
 	
 	

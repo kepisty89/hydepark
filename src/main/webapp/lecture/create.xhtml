@@ -15,10 +15,7 @@
 			<br />
 			<br />
 			<h:panelGrid columns="2">
-			
-				<h:outputText style="font-weight: bold;" value="Skopiowac poprzedni wykład?" />
-				<h:selectBooleanCheckbox />  				
-								
+											
 				<h:outputText value="Nazwa wykładu:" />
 				<p:inputText value="#{lectureBean.name}" />								
 				
@@ -27,14 +24,14 @@
 				
 				<h:outputText value="Wybierz id wykładowcy:" />			
 				<h:selectOneMenu value="#{lectureBean.teacherId}">
-	    			<f:selectItems value="#{lectureBean.allTeachersIds}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
+	    			<f:selectItems value="#{lectureBean.allTeachersCredentials}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
 	    		</h:selectOneMenu>
-				
-				<h:outputText value="Limit osób:" />
+	    		
+	    		<h:outputText value="Limit osób:" />
 				<p:layoutUnit position="top">	    			    		 			     
-		        <p:inputText id="txt1" value="20" />  
-		        <p:slider for="txt1"/>  	
-		        </p:layoutUnit>
+			        <p:inputText id="lectureLimit" value="#{lectureBean.limit}" />  
+			        <p:slider for="lectureLimit"/>  	
+		        </p:layoutUnit>				  		      
 		        
 		        <h:outputText value="Opis wykładu:" />
 				<p:inputTextarea style="width:300px; height:100px;" effectDuration="400" value="#{lectureBean.description}" />		    

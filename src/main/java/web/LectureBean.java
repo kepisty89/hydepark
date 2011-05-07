@@ -23,15 +23,20 @@ public class LectureBean {
 	@Inject
 	LectureInterface lectureManager;
 	
+	//Lecture
 	private long id;
 	private String name;
 	private String description;	
-	private long teacherId;
-	private User teacher;
-	private Date startDate = new Date(); //sets the current date - for test purpose	
+	private long teacherId;		
 	private List<Attachment> attachment =
 			Arrays.asList(new Attachment()); //sets attachments - fore test purpose;
-
+		
+	//LectureDetails	
+	private Date startDate = new Date(); //sets the current date
+	private User teacher;	
+	private int limit;
+	
+	
 	public User getTeacher() {
 		return teacher;
 	}
@@ -88,14 +93,22 @@ public class LectureBean {
 	}
 	
 	
+	public int getLimit() {
+		return limit;
+	}
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
 	//Actions
 	public String createLecture() {
 		if(name.isEmpty() || description.isEmpty()) {
 			return "/panel/error";
 		}
 		else {
-			lectureManager.createLecture(name, description, startDate, teacherId);			
-			return "/panel/success";
+			lectureManager.createLecture(name, description, startDate, teacherId, limit);			
+			return "/hydepark/panel/teacher.jsf";
 		}
 	}
 	
@@ -148,7 +161,8 @@ public class LectureBean {
 		return lectureManager.getAllLecturesDetails();
 	}
 	
-	public List<Credential> getAllTeachersIds() {
-		return lectureManager.getAllTeachersIds();
+	public List<Credential> getAllTeachersCredentials() {
+		return lectureManager.getAllTeachersCredentials();
 	}
+	
 }

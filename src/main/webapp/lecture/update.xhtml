@@ -17,7 +17,16 @@
 	    		</h:selectOneMenu>
 	
 				<h:outputText value="Nowa nazwa (jeśli ją zmieniasz): " />
-				<h:inputText value="#{lectureBean.name}" />
+				<p:inputText value="#{lectureBean.name}" />
+				
+				<h:outputText value="Data (jeśli zmieniasz, wybierz nową):" />
+				<p:calendar value="#{lectureBean.startDate}" />	
+				
+				<h:outputText value="Limit osób:" />
+				<p:layoutUnit position="top">	    			    		 			     
+			        <p:inputText id="lectureLimit" value="#{lectureBean.limit}" />  
+			        <p:slider for="lectureLimit"/>  	
+		        </p:layoutUnit>		
 				
 				<h:outputText value="Nowy opis (jeśli go zmieniasz): " />
 				<p:inputTextarea style="width:300px;height:100px;" effectDuration="400" value="#{lectureBean.description}" />

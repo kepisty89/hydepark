@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,8 +60,8 @@ public class Lecture {
 		super();
 		this.name = name;
 		this.description = description;
-		this.lectureDetail = Arrays.asList(new LectureDetail());;
-		this.attachment = Arrays.asList(new Attachment());
+		this.lectureDetail = new ArrayList<LectureDetail>();
+		this.attachment = new ArrayList<Attachment>();
 	}
 	
 	public Lecture() {

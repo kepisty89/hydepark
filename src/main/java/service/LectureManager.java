@@ -1,5 +1,6 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -22,34 +23,28 @@ public class LectureManager implements LectureInterface {
 	/* Interface methods */	
 	@Override
 	public boolean createLecture(String name, String description, Date startDate,
-			long teacherId) {		
+			long teacherId, int limit) {		
+				
+		Lecture lecture = new Lecture(name, description);								
 		
-		//create new LECTURE object depending on data
-		Lecture lecture = new Lecture(name, description);
-
-		//find teacher by id
 		User teacher = (User) em.createQuery(
 				"from User where id=?1"
 				)
 				.setParameter(1, teacherId)
 				.getSingleResult();
-						
-		//we should first add lecture to DB without detail	
+		
+		LectureDetail lectureDetail = new LectureDetail(startDate, teacher, lecture, limit);
+				
+		List<LectureDetail> detailList = lecture.getLectureDetail();
+		detailList.add(lectureDetail);
+		
+		lecture.setLectureDetail(detailList);
+		
+		em.persist(lectureDetail);
 		em.persist(lecture);
 		
-		Lecture savedLecture = em.find(Lecture.class, lecture.getId());
-				
-		//create new LECTUREDETAIL object depending on saved lecture
-		LectureDetail lectureDetail = new LectureDetail(startDate, teacher, savedLecture);		
-		em.persist(lectureDetail);		
-		
-		//add lectureDetail to lecture
-		savedLecture.getLectureDetail().add(lectureDetail);
-		//set lectureDetail
-		savedLecture.setLectureDetail(savedLecture.getLectureDetail());
-		
-		em.merge(savedLecture);					
-		return true;
+						
+		return true;		
 	}
 
 	@Override
@@ -129,7 +124,7 @@ public class LectureManager implements LectureInterface {
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Credential> getAllTeachersIds() {
+	public List<Credential> getAllTeachersCredentials() {
 		return em.createQuery("from Credential where role=?1").setParameter(1, Role.TEACHER).getResultList();
 	}
 
