@@ -8,8 +8,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import service.LectureInterface;
-import service.ParticipantInterface;
-
 import domain.Lecture;
 import domain.LectureDetail;
 import domain.User;

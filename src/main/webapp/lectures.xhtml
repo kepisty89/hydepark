@@ -6,15 +6,13 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
-		<h2>Twoje wykłady:</h2>
+		<h2>Twoje wykłady, w których bierzesz udział:</h2>
 		
 		<h:form rendered="#{loginBean.loggedIn}">
 			<p:dataTable var="lecture"
 				value="#{lectureDetailBean.userParticipates}" paginator="true"
 				rows="10" selection="#{lectureDetailBean.selectedLecture}"
-				selectionMode="single" onRowSelectUpdate="display">
-
-				<f:facet name="header">Wykłady, w których jesteś słuchaczem</f:facet>
+				selectionMode="single" onRowSelectUpdate="display">			
 
 				<p:column sortBy="#{lecture.startDate}" sortFunction="#{lectureDetailBean.sort}"
 					filterBy="#{lecture.startDate}">
@@ -74,9 +72,7 @@
 			<p:dataTable var="lecture"
 				value="#{lectureDetailBean.userLectureDetails}" paginator="true"
 				rows="10" selection="#{lectureDetailBean.selectedLecture}"
-				selectionMode="single" onRowSelectUpdate="display">
-
-				<f:facet name="header">Wykłady, które prowadzisz</f:facet>
+				selectionMode="single" onRowSelectUpdate="display">			
 
 				<p:column sortBy="#{lecture.startDate}" sortFunction="#{lectureDetailBean.sort}"
 					filterBy="#{lecture.startDate}">
@@ -123,8 +119,6 @@
 				value="#{lectureDetailBean.allLectureDetails}" paginator="true"
 				rows="10" selection="#{lectureDetailBean.selectedLecture}"
 				selectionMode="single" onRowSelectUpdate="display">
-
-				<f:facet name="header">Wszystkie wykłady na portalu</f:facet>
 
 				<p:column sortBy="#{lecture.startDate}" sortFunction="#{lectureDetailBean.sort}"
 					filterBy="#{lecture.startDate}">
