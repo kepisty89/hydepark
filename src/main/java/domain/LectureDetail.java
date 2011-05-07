@@ -36,7 +36,7 @@ public class LectureDetail {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	public User getTeacher() {
 		return teacher;
 	}

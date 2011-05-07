@@ -50,6 +50,11 @@ public class UserManager implements UserInterface {
 		}
 		
 		long userId = findUserCredentialId(login);
+		
+		if(userId == -1) {
+			return false;
+		}
+		
 		Credential credential = em.find(Credential.class, userId);
 		User user = em.find(User.class, userId);
 		if (credential.getPassword().contentEquals(password))
@@ -88,6 +93,11 @@ public class UserManager implements UserInterface {
 		}
 		
 		long userId = findUserCredentialId(login);
+		
+		if(userId == -1) {
+			return false;
+		}
+		
 		User user = em.find(User.class, userId);	
 		Credential credential = em.find(Credential.class, userId);
 		
@@ -231,31 +241,29 @@ public class UserManager implements UserInterface {
 	}
 
 	@Override
-	public boolean setRole(String login, String password, String role) {
+	public boolean setRole(String login, String role) {
 		
 		long userId = findUserCredentialId(login);
 		Credential credential = em.find(Credential.class, userId);
 		
-		if(credential.getPassword().contentEquals(password)) {
-			if(role.contentEquals("user")) {
-				credential.setRole(Role.USER);
-				em.merge(credential);	
-				return true;
-			}
-			if(role.contentEquals("admin")) {
-				credential.setRole(Role.ADMIN);
-				em.merge(credential);	
-				return true;
-			}
-			if(role.contentEquals("teacher")) {
-				credential.setRole(Role.TEACHER);
-				em.merge(credential);	
-				return true;
-			}
-			return false;
-		}
 		
+		if(role.contentEquals("user")) {
+			credential.setRole(Role.USER);
+			em.merge(credential);	
+			return true;
+		}
+		if(role.contentEquals("admin")) {
+			credential.setRole(Role.ADMIN);
+			em.merge(credential);	
+			return true;
+		}
+		if(role.contentEquals("teacher")) {
+			credential.setRole(Role.TEACHER);
+			em.merge(credential);	
+			return true;
+		}
 		return false;
+		
 	}
 
 

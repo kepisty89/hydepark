@@ -23,6 +23,14 @@ public class UserBean {
 	private String newPassword;
 	private String role;
 	
+	private Credential selectedCredential;
+	
+	public Credential getSelectedCredential() {
+		return selectedCredential;
+	}
+	public void setSelectedCredential(Credential selectedCredential) {
+		this.selectedCredential = selectedCredential;
+	}
 	public String getRole() {
 		return role;
 	}
@@ -138,10 +146,10 @@ public class UserBean {
 	}
 	
 	public String roleUser() {
-		if(login.isEmpty() || password.isEmpty()) {
+		if(login.isEmpty()) {
 			return "/panel/error";
 		}
-		if(userManager.setRole(login, password, role)) {
+		if(userManager.setRole(login, role)) {
 			return "/panel/success";
 		}
 		else {
@@ -165,5 +173,6 @@ public class UserBean {
 	public List<Credential> getAllTeachers() {
 		return userManager.readTeacherCredential();
 	}
+	
 	
 }

@@ -6,15 +6,46 @@
 	xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-    
-    <h2>User - Read</h2>
 
-	<h:panelGrid columns="2">
-		<h:outputText value="zarejestrowani userzy - " />
-		<h:selectOneMenu value="#{userBean.login}">
-   			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
-   		</h:selectOneMenu>
-	</h:panelGrid>
+	<p:panel header="Użytkownicy">
+	
+		<h:form>
+			<p:dataTable var="credential"
+				value="#{userBean.allCredentials}" paginator="true"
+				rows="10" selection="#{userBean.selectedCredential}"
+				selectionMode="single" onRowSelectUpdate="display">
+
+				<f:facet name="header">Wszyscy userzy w serwisie</f:facet>
+
+				<p:column 
+					filterBy="#{credential.login}">
+					<f:facet name="header">
+						<h:outputText value="Login" />
+					</f:facet>
+					<h:outputText value="#{credential.login}" />
+				</p:column>
+				
+				<p:column 
+					filterBy="#{credential.role}">
+					<f:facet name="header">
+						<h:outputText value="Rola" />
+					</f:facet>
+					<h:outputText value="#{credential.role}" />
+				</p:column>
+				
+				<p:column 
+					filterBy="#{credential.rank}">
+					<f:facet name="header">
+						<h:outputText value="Ocena" />
+					</f:facet>
+					<h:outputText value="#{credential.rank}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		
+	</p:panel>
+
+	
  		      
    </ui:define>
 </ui:composition>

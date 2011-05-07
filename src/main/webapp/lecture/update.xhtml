@@ -7,27 +7,29 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>Lecture - Update</h2>
+    <p:panel header="Edytuj wykład (ogólnie)">
 
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="lecture id " />
-			<h:selectOneMenu value="#{lectureBean.id}">
-    			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="#{current.id}" itemValue="#{current.id}" />
-    		</h:selectOneMenu>
-
-			<h:outputText value="new name " />
-			<h:inputText value="#{lectureBean.name}" />
-			
-			<h:outputText value="new description " />
-			<h:inputText value="#{lectureBean.description}" />
-
-		</h:panelGrid>
-
-		<h:panelGrid columns="2">
-			<h:commandButton value="updateLecture" action="#{lectureBean.updateLecture}" />
-		</h:panelGrid>
-	</h:form>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Wybierz wykład: " />
+				<h:selectOneMenu value="#{lectureBean.id}">
+	    			<f:selectItems value="#{lectureBean.allLecture}" var="current" itemLabel="Id: #{current.id} -> Nazwa: #{current.name}" itemValue="#{current.id}" />
+	    		</h:selectOneMenu>
+	
+				<h:outputText value="Nowa nazwa (jeśli ją zmieniasz): " />
+				<h:inputText value="#{lectureBean.name}" />
+				
+				<h:outputText value="Nowy opis (jeśli go zmieniasz): " />
+				<p:inputTextarea style="width:300px;height:100px;" effectDuration="400" value="#{lectureBean.description}" />
+	
+			</h:panelGrid>
+	
+			<h:panelGrid columns="2">
+				<p:commandButton value="Edytuj wykład" action="#{lectureBean.updateLecture}" ajax="false" />
+			</h:panelGrid>
+		</h:form>
+	
+	</p:panel>
       
    </ui:define>
 </ui:composition>

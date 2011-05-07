@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import service.LectureInterface;
+
 import domain.Lecture;
 import domain.LectureDetail;
 import domain.User;
@@ -127,6 +128,15 @@ public class LectureDetailBean {
 
 	public void setUserLectureDetails(List<LectureDetail> userLectureDetails) {
 		this.userLectureDetails = userLectureDetails;
+	}
+	
+	public String deleteLectureDetail() {
+		if(Ilecture.deleteLectureDetail(id)) {
+			return "/panel/success";
+		}
+		else {
+			return "/panel/error";
+		}
 	}
 	
 }

@@ -16,7 +16,7 @@ public class LoginManager implements LoginInterface {
 	@Override
 	public boolean login(long id, String password) {
 		Credential credential = em.find(Credential.class, id);
-		if(credential.getPassword().contentEquals(password)) {
+		if(credential.getPassword().contentEquals(password) && !credential.isBanned()) {
 			return true;
 		}
 		else {

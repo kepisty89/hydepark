@@ -7,20 +7,24 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
     
-    <h2>User - Ban</h2>
+    <p:panel header="Zbanuj konto">
+	
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Login: " />
+				<h:selectOneMenu value="#{userBean.login}">
+	    			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
+	    		</h:selectOneMenu>
+			</h:panelGrid>
+	
+			<h:panelGrid columns="2">
+				<p:commandButton value="Zbanuj konto" action="#{userBean.banUser}" ajax="false" />
+			</h:panelGrid>
+		</h:form>
+	
+	</p:panel>
 
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="login " />
-			<h:selectOneMenu value="#{userBean.login}">
-    			<f:selectItems value="#{userBean.allCredentials}" var="current" itemLabel="#{current.login}" itemValue="#{current.login}" />
-    		</h:selectOneMenu>
-		</h:panelGrid>
-
-		<h:panelGrid columns="2">
-			<h:commandButton value="banUser" action="#{userBean.banUser}" />
-		</h:panelGrid>
-	</h:form>
+	
       
    </ui:define>
 </ui:composition>
