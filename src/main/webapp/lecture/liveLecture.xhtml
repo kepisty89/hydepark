@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content" style="font-size: 0.7em;">       
+   
+		<p:panel header="Wykład">
+			<br />
+			<h:outputText style="font-weight: bold;" value="Widok ten będzie, w zależności od zalogowanego użytkownika, dostosowany do odbioru lub wygłaszania wykładu."/>			
+			<br />
+			<br />			
+											
+				<p:fieldset legend="Nadawanie wykładu" toggleable="true" toggleSpeed="500"                  
+                			onToggleUpdate="growl">
+					<h:outputText value="Tutaj możesz zarządzac nadawaniem wykładu." />
+					<br />
+					<br />
+					<h:outputText value="Wykład....." />
+					<br />										
+					<h:outputText value="Wykład....." />
+					<br />										
+					<h:outputText value="Wykład....." />
+					<br />										
+					<h:outputText value="Wykład....." />
+					<br />										
+					<h:outputText value="Wykład....." />
+					<br />										
+					<h:outputText value="Wykład....." />
+					<br />										
+				</p:fieldset>
+												
+				<br />
+				<br />
+				
+		        
+		        <p:fieldset legend="Słuchanie wykładu" toggleable="true" toggleSpeed="500"                  
+                			onToggleUpdate="growl">
+                	<h:outputText value="Tutaj możesz zarządzac odsłuchem wykładu." />
+                	<br />                	 
+                	<br />
+                	<h:outputText value="Wykład....." />	
+                	<br />                	 
+                	<h:outputText value="Wykład....." />	
+                	<br />                	 
+                	<h:outputText value="Wykład....." />	
+                	<br />                	 
+                	<h:outputText value="Wykład....." />	
+                	<br />                	 
+                	<h:outputText value="Wykład....." />	
+                	<br />                	 
+                	<h:outputText value="Wykład....." />	
+                	<br />                	 
+                </p:fieldset>						    												
+		</p:panel>			     
+   </ui:define>
+</ui:composition>
