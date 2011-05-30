@@ -40,30 +40,39 @@ public class LoginBean implements Serializable{
 	public boolean isLoggedIn() {
 		return loggedIn;
 	}
+	
 	public void setLoggedIn(boolean loggedIn) {
 		LoginBean.loggedIn = loggedIn;
 	}
+	
 	public long getId() {
 		return id;
 	}
+	
 	public void setId(long id) {
 		LoginBean.id = id;
 	}
+	
 	public String getLogin() {
 		return login;
 	}
+	
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	
 	public Role getRole() {
 		return role;
 	}
@@ -77,7 +86,7 @@ public class LoginBean implements Serializable{
 			loggedIn = true;
 			login = loginManager.convertIdToLogin(id);
 			role = loginManager.convertIdToRole(id);
-			return "/panel/success";
+			return "/home.jsf";
 		}
 		else {
 			return "/panel/error";
@@ -92,7 +101,7 @@ public class LoginBean implements Serializable{
 		login = null;
 		password = null;
 		loggedIn = false;
-		return "/panel/success";
+		return "/home.jsf";
 	}
 	
 	public String logAsUser() {
@@ -119,6 +128,5 @@ public class LoginBean implements Serializable{
 			return "/panel/login";
 		}
 	}
-	
-		
+				
 }

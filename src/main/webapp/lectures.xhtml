@@ -8,7 +8,7 @@
 	<ui:define name="content">
 		<h2>Wykłady, w których bierzesz udział:</h2>
 		
-		<h:form rendered="#{loginBean.loggedIn}">
+		<h:form rendered="#{loginBean.role == 'USER' || loginBean.role == 'ADMIN'}">
 			<p:dataTable var="lecture"
 				value="#{lectureDetailBean.userParticipates}" paginator="true"
 				rows="10" selection="#{lectureDetailBean.selectedLecture}"
@@ -74,10 +74,10 @@
 
 		<h:outputText value="Zaloguj się by przeglądac"  rendered="#{!loginBean.loggedIn}"/>
 		<br />
-		
-		<h2>Wykłady, które prowadzisz:</h2>
-
-		<h:form rendered="#{loginBean.loggedIn}">
+				
+			<h2>Wykłady, które prowadzisz:</h2>
+					
+		<h:form rendered="#{loginBean.role == 'TEACHER' || loginBean.role == 'ADMIN'}">
 			<p:dataTable var="lecture"
 				value="#{lectureDetailBean.userLectureDetails}" paginator="true"
 				rows="10" selection="#{lectureDetailBean.selectedLecture}"
@@ -126,6 +126,8 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
+
+		<h:outputText value="Niestety, nie jesteś wykładowcą." rendered="#{loginBean.role != 'TEACHER' || loginBean.role != 'ADMIN'}"/>
 
 		<br />
 
